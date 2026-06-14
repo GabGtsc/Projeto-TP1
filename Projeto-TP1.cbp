@@ -32,7 +32,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="dominios/Codigo.cpp" />
+		<Unit filename="dominios/Codigo.hpp" />
+		<Unit filename="dominios/Email.cpp" />
+		<Unit filename="dominios/Email.hpp" />
+		<Unit filename="dominios/Nome.cpp" />
+		<Unit filename="dominios/Nome.hpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1781123775 source:/home/gabgtsc/Code/Projeto-TP1/dominios/Codigo.cpp
+	"Codigo.hpp"
+	<cctype>
+	<stdexcept>
+	<string>
+
+1781123775 /home/gabgtsc/Code/Projeto-TP1/dominios/Codigo.hpp
+	<string>
+
+1781123775 source:/home/gabgtsc/Code/Projeto-TP1/dominios/Email.cpp
+	"Email.hpp"
+	<cctype>
+	<stdexcept>
+	<string>
+	<iostream>
+
+1781123775 /home/gabgtsc/Code/Projeto-TP1/dominios/Email.hpp
+	<string>
+
+1781123775 source:/home/gabgtsc/Code/Projeto-TP1/dominios/Nome.cpp
+	<stdexcept>
+	<cctype>
+	<string>
+	"Nome.hpp"
+
+1781123775 /home/gabgtsc/Code/Projeto-TP1/dominios/Nome.hpp
+	<string>
+	<stdio.h>
+
