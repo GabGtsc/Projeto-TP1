@@ -5,7 +5,7 @@
 	<stdexcept>
 	<string>
 
-1781123775 /home/gabgtsc/Code/Projeto-TP1/dominios/Codigo.hpp
+1781478254 /home/gabgtsc/Code/Projeto-TP1/dominios/Codigo.hpp
 	<string>
 
 1781123775 source:/home/gabgtsc/Code/Projeto-TP1/dominios/Email.cpp
@@ -27,4 +27,17 @@
 1781123775 /home/gabgtsc/Code/Projeto-TP1/dominios/Nome.hpp
 	<string>
 	<stdio.h>
+
+1781123775 source:/home/gabgtsc/Code/Projeto-TP1/main.cpp
+	<iostream>
+
+1781521299 source:/home/gabgtsc/Code/Projeto-TP1/dominios/Data.cpp
+	"Data.hpp"
+	<format>
+	<stdexcept>
+	<string>
+	<vector>
+
+1781496031 /home/gabgtsc/Code/Projeto-TP1/dominios/Data.hpp
+	<string>
 
