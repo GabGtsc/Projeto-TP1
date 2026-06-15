@@ -1,4 +1,5 @@
 #include "Data.hpp"
+#include <format>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -44,4 +45,10 @@ void Data::setData(const std::string &data) {
   this->dia = dia;
   this->mes = mes;
   this->ano = ano;
+}
+
+Data::Data(const std::string &data) { setData(data); }
+
+std::string Data::getData() const {
+  return std::format("{:02}/{:02}/{}", this->dia, this->mes, this->ano);
 }
