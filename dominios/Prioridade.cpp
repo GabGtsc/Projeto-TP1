@@ -1,16 +1,12 @@
 #include "Prioridade.hpp"
 
-void Prioridade::validar(std::string valor) {
-    if (valor != "ALTA" && valor != "MEDIA" && valor != "BAIXA") {
+void Prioridade::validar(const std::string &prioridade) {
+    if (prioridade != "ALTA" && prioridade != "MEDIA" && prioridade != "BAIXA") {
         throw std::invalid_argument("Formato de prioridade invalido.");
     }
 }
 
-void Prioridade::setValor(std::string valor) {
-    validar(valor);
-    this->valor = valor;
-}
-
-std::string Prioridade::getValor() const {
-    return valor;
+void Prioridade::setPrioridade(const std::string &prioridade) {
+    validar(prioridade);
+    this->prioridade_ = prioridade;
 }
