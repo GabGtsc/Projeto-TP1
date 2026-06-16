@@ -43,4 +43,5 @@
 /bin/
 /.agents/
 *.layout
+*.depend
 docs/
