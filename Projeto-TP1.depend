@@ -111,3 +111,15 @@
 	"../dominios/Nome.hpp"
 	<stdexcept>
 
+1781568378 source:/home/gabgtsc/Code/Projeto-TP1/testes/teste_estado.cpp
+	"doctest.h"
+	"../dominios/Estado.hpp"
+	<stdexcept>
+
+1781567421 /home/gabgtsc/Code/Projeto-TP1/dominios/Estado.hpp
+	<string>
+
+1781566944 source:/home/gabgtsc/Code/Projeto-TP1/dominios/Estado.cpp
+	"Estado.hpp"
+	<stdexcept>
+

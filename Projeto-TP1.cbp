@@ -68,6 +68,8 @@
 		<Unit filename="dominios/Email.cpp" />
 		<Unit filename="dominios/Email.hpp" />
 		<Unit filename="dominios/Nome.cpp" />
+		<Unit filename="dominios/Estado.cpp" />
+		<Unit filename="dominios/Estado.hpp" />
 		<Unit filename="dominios/Nome.hpp" />
 		<Unit filename="testes/teste_codigo.cpp">
 			<Option target="Testes" />
@@ -79,6 +81,9 @@
 			<Option target="Testes" />
 		</Unit>
 		<Unit filename="testes/teste_main.cpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="testes/teste_estado.cpp">
 			<Option target="Testes" />
 		</Unit>
 		<Unit filename="testes/teste_nome.cpp">
