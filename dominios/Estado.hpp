@@ -1,17 +1,42 @@
-#ifndef ESTADO_HPP
-#define ESTADO_HPP
-
+#pragma once
 #include <string>
-#include <stdexcept>
 
+/**
+ * @brief Classe de dominio que representa estado de complitude.
+ * podendo assumar apenas um conjunto restrito de valores predefinidos
+ * */
 class Estado {
 private:
-    std::string valor;
-    void validar(std::string valor);
+  /// String que armazena o valor do estado
+  std::string estado_;
 
 public:
-    void setValor(std::string valor);
-    std::string getValor() const;
-};
+  /**
+   * @brief setter do estado, define um valor
+   *
+   * O valor passado precisa ser um da seguinte lista:
+   * "A FAZER", "FAZENDO" ou "FEITO"
+   *
+   * @param estado String representando o novo estado a ser definido
+   * @throw std::invalid_argument Se o valor passado nao for um dos estados
+   * validos
+   */
+  void setEstado(const std::string &estado);
 
-#endif
+  /**
+   * @brief Constructor da classe estado
+   *
+   * Inicializa o objeto com um valor de estado valido, internamente chama
+   * setEstado() para definir valor inicial.
+   *
+   * @param estado String com valor inicial para estado
+   */
+  Estado(const std::string estado) { setEstado(estado); };
+
+  /**
+   * @brief Retorna o valor atual do estado
+   *
+   * @return std::string contendo o valor do estado no objeto
+   */
+  std::string getEstado() const { return this->estado_; };
+};

@@ -1,16 +1,11 @@
 #include "Estado.hpp"
+#include <stdexcept>
 
-void Estado::validar(std::string valor) {
-    if (valor != "A FAZER" && valor != "FAZENDO" && valor != "FEITO") {
-        throw std::invalid_argument("Formato de estado invalido.");
-    }
-}
-
-void Estado::setValor(std::string valor) {
-    validar(valor);
-    this->valor = valor;
-}
-
-std::string Estado::getValor() const {
-    return valor;
+void Estado::setEstado(const std::string &estado) {
+  if (estado == "A FAZER" || estado == "FAZENDO" || estado == "FEITO") {
+    this->estado_ = estado;
+  } else {
+    throw std::invalid_argument(
+        "Estado dever ser um de: A FAZER, FAZENDO, FEITO");
+  }
 }
