@@ -1,5 +1,4 @@
-#ifndef PESSOA_HPP
-#define PESSOA_HPP
+#pragma once
 
 #include "../dominios/Email.hpp"
 #include "../dominios/Nome.hpp"
@@ -26,49 +25,47 @@ public:
      * @brief Armazena o e-mail da pessoa.
      * @param email Instância da classe de domínio Email.
      */
-    void setEmail(const Email& email);
+    void setEmail(const Email& email) { this->email = email; }
 
     /**
      * @brief Retorna o e-mail da pessoa.
      * @return Instância da classe de domínio Email.
      */
-    Email getEmail() const;
+    const Email& getEmail() const { return email; }
 
     /**
      * @brief Armazena o nome da pessoa.
      * @param nome Instância da classe de domínio Nome.
      */
-    void setNome(const Nome& nome);
+    void setNome(const Nome& nome) { this->nome = nome; }
 
     /**
      * @brief Retorna o nome da pessoa.
      * @return Instância da classe de domínio Nome.
      */
-    Nome getNome() const;
+    const Nome& getNome() const { return nome; }
 
     /**
      * @brief Armazena a senha da pessoa.
      * @param senha Instância da classe de domínio Senha.
      */
-    void setSenha(const Senha& senha);
+    void setSenha(const Senha& senha) { this->senha = senha; }
 
     /**
      * @brief Retorna a senha da pessoa.
      * @return Instância da classe de domínio Senha.
      */
-    Senha getSenha() const;
+    const Senha& getSenha() const { return senha; }
 
     /**
      * @brief Armazena o papel da pessoa no projeto.
      * @param papel Instância da classe de domínio Papel.
      */
-    void setPapel(const Papel& papel);
+    void setPapel(const Papel& papel) { this->papel = papel; }
 
     /**
      * @brief Retorna o papel da pessoa no projeto.
      * @return Instância da classe de domínio Papel.
      */
-    Papel getPapel() const;
+    const Papel& getPapel() const { return papel; }
 };
-
-#endif // PESSOA_HPP
