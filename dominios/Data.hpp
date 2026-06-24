@@ -3,7 +3,7 @@
 
 class Data {
 private:
-  int dia, mes, ano;
+  int dia_, mes_, ano_;
 
 public:
   Data(const std::string &data);

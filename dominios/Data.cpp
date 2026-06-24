@@ -42,13 +42,13 @@ void Data::setData(const std::string &data) {
       throw std::invalid_argument("Dias demais para o mês dado");
   }
 
-  this->dia = dia;
-  this->mes = mes;
-  this->ano = ano;
+  this->dia_ = dia;
+  this->mes_ = mes;
+  this->ano_ = ano;
 }
 
 Data::Data(const std::string &data) { setData(data); }
 
 std::string Data::getData() const {
-  return std::format("{:02}/{:02}/{}", this->dia, this->mes, this->ano);
+  return std::format("{:02}/{:02}/{}", this->dia_, this->mes_, this->ano_);
 }
