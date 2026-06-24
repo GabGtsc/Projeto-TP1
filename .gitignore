@@ -45,3 +45,6 @@
 *.layout
 *.depend
 docs/
+
+# vscode local configurations
+.vscode/
