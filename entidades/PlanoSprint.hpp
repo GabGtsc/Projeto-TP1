@@ -23,7 +23,7 @@ class PlanoSprint{
 
         /// @brief Retorna o codigo do plano de sprint.
         Codigo getCodigo() const{
-            return codigo.getCodigo();
+            return codigo;
         }
 
         // --- Objetivo ---
@@ -36,7 +36,7 @@ class PlanoSprint{
 
         /// @brief Retorna o objetivo do plano de sprint.
         Texto getObjetivo() const{
-            return objetivo.getTexto();
+            return objetivo;
         }
 
         // --- Capacidade ---
@@ -49,6 +49,6 @@ class PlanoSprint{
 
         /// @brief Retorna a capacidade do plano de sprint.
         Tempo getDuracao() const{
-            return duracao.getTempo();
+            return duracao;
         }
 };
