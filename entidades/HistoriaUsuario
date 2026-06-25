@@ -1,0 +1,125 @@
+#pragma once
+
+#include <string>
+#include "Codigo.hpp"
+#include "Tempo.hpp"
+#include "Prioridade.hpp"
+#include "Estado.hpp"
+#include "Texto.hpp"
+
+/// @brief Entidade que representa uma historia de usuario associada a um projeto.
+class HistoriaUsuario{
+    private:
+        Codigo codigo;
+        Texto titulo;
+        Texto papel;
+        Texto acao;
+        Texto valor;
+        Tempo estimativa;
+        Prioridade prioridade;
+        Estado estado;
+
+    public:
+        // --- Codigo (chave primaria) ---
+
+        /// @brief Inicializa o codigo da historia de usuario (apenas na criacao).
+        /// @param cod Codigo no formato valido (2 letras maiusculas + 3 digitos).
+        void inicializarCodigo(const std::string& cod){
+            codigo.setCodigo(cod);
+        }
+
+        /// @brief Retorna o codigo da historia de usuario.
+        Codigo getCodigo() const{
+            return codigo;
+        }
+        // --- Titulo ---
+
+        /// @brief Define o titulo da historia de usuario.
+        /// @param tit Texto com ate 40 caracteres validos.
+        void setTitulo(const std::string& tit){
+            titulo.setTexto(tit);
+        }
+
+        /// @brief Retorna o titulo da historia de usuario.
+        Texto getTitulo() const{
+            return titulo;
+        }
+
+        // --- Papel ---
+
+        /// @brief Define o papel da historia de usuario (como...).
+        /// @param pap Texto com ate 40 caracteres validos.
+        void setPapel(const std::string& pap){
+            papel.setTexto(pap);
+        }
+
+        /// @brief Retorna o papel da historia de usuario.
+        Texto getPapel() const{
+            return papel;
+        }
+
+        // --- Acao ---
+
+        /// @brief Define a acao da historia de usuario (eu quero...).
+        /// @param ac Texto com ate 40 caracteres validos.
+        void setAcao(const std::string& ac){
+            acao.setTexto(ac);
+        }
+
+         /// @brief Retorna a acao da historia de usuario.
+        Texto getAcao() const{
+            return acao;
+        }
+
+        // --- Valor ---
+
+        /// @brief Define o valor da historia de usuario (para...).
+        /// @param val Texto com ate 40 caracteres validos.
+        void setValor(const std::string& val){
+            valor.setTexto(val);
+        }
+
+        /// @brief Retorna o valor da historia de usuario.
+        Texto getValor() const{
+            return valor;
+        }
+        
+        // --- Estimativa ---
+
+        /// @brief Define a estimativa de esforco em dias.
+        /// @param est Valor entre 1 e 365.
+        void setEstimativa(int est){
+            estimativa.setTempo(est);
+        }
+
+        /// @brief Retorna a estimativa da historia de usuario.
+        Tempo getEstimativa() const{
+            return estimativa;
+        }
+
+        // --- Prioridade ---
+
+        /// @brief Define a prioridade da historia de usuario.
+        /// @param pri Valor: ALTA, MEDIA ou BAIXA.
+        void setPrioridade(const std::string& pri){
+            prioridade.setPrioridade(pri);
+        }
+
+        /// @brief Retorna a prioridade da historia de usuario.
+        Prioridade getPrioridade() const{
+            return prioridade;
+        }
+
+        // --- Estado ---
+
+        /// @brief Define o estado da historia de usuario.
+        /// @param est Valor: A FAZER, FAZENDO ou FEITO.
+        void setEstado(const std::string& est){
+            estado.setEstado(est);
+        }
+
+        /// @brief Retorna o estado da historia de usuario.
+        Estado getEstado() const{
+            return estado;
+        }
+};
