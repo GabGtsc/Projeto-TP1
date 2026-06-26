@@ -67,10 +67,24 @@
 		<Unit filename="dominios/Data.hpp" />
 		<Unit filename="dominios/Email.cpp" />
 		<Unit filename="dominios/Email.hpp" />
-		<Unit filename="dominios/Nome.cpp" />
 		<Unit filename="dominios/Estado.cpp" />
 		<Unit filename="dominios/Estado.hpp" />
+		<Unit filename="dominios/Nome.cpp" />
 		<Unit filename="dominios/Nome.hpp" />
+		<Unit filename="dominios/Papel.cpp" />
+		<Unit filename="dominios/Papel.hpp" />
+		<Unit filename="dominios/Prioridade.cpp" />
+		<Unit filename="dominios/Prioridade.hpp" />
+		<Unit filename="dominios/Senha.cpp" />
+		<Unit filename="dominios/Senha.hpp" />
+		<Unit filename="dominios/Tempo.cpp" />
+		<Unit filename="dominios/Tempo.hpp" />
+		<Unit filename="dominios/Texto.cpp" />
+		<Unit filename="dominios/Texto.hpp" />
+		<Unit filename="entidades/HistoriaDeUsuario.hpp" />
+		<Unit filename="entidades/Pessoa.hpp" />
+		<Unit filename="entidades/PlanoDeSprint.hpp" />
+		<Unit filename="entidades/Projeto.hpp" />
 		<Unit filename="testes/teste_codigo.cpp">
 			<Option target="Testes" />
 		</Unit>
@@ -80,13 +94,40 @@
 		<Unit filename="testes/teste_email.cpp">
 			<Option target="Testes" />
 		</Unit>
-		<Unit filename="testes/teste_main.cpp">
-			<Option target="Testes" />
-		</Unit>
 		<Unit filename="testes/teste_estado.cpp">
 			<Option target="Testes" />
 		</Unit>
+		<Unit filename="testes/teste_historia_de_usuario.cpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="testes/teste_main.cpp">
+			<Option target="Testes" />
+		</Unit>
 		<Unit filename="testes/teste_nome.cpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="testes/teste_papel.cpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="testes/teste_pessoa.cpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="testes/teste_plano_de_sprint.cpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="testes/teste_prioridade.cpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="testes/teste_projeto.cpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="testes/teste_senha.cpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="testes/teste_tempo.cpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="testes/teste_texto.cpp">
 			<Option target="Testes" />
 		</Unit>
 		<Extensions>
