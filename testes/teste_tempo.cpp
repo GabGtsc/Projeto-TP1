@@ -1,5 +1,5 @@
 #include "doctest.h"
-#include "Tempo.hpp"
+#include "../dominios/Tempo.hpp"
 
 TEST_CASE("Testando o Dominio Tempo") {
     SUBCASE("Valores validos (Dentro dos limites)") {

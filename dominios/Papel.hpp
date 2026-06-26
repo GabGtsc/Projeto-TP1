@@ -38,6 +38,7 @@ public:
      *
      * @param papel String com valor inicial para o papel
      */
+    Papel() = default;
     Papel(const std::string &papel) { setPapel(papel); };
 
     /**

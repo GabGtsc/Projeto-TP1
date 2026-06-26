@@ -38,6 +38,7 @@ public:
      *
      * @param prioridade String com valor inicial para prioridade
      */
+    Prioridade() = default;
     Prioridade(const std::string &prioridade) { setPrioridade(prioridade); };
 
     /**

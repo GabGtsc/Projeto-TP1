@@ -38,6 +38,7 @@ public:
      *
      * @param senha String com valor inicial da senha
      */
+    Senha() = default;
     Senha(const std::string &senha) { setSenha(senha); };
 
     /**

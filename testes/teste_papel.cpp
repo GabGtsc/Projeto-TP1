@@ -1,5 +1,5 @@
 #include "doctest.h"
-#include "Papel.hpp"
+#include "../dominios/Papel.hpp"
 
 TEST_CASE("Testando o Dominio Papel") {
     SUBCASE("Valores validos") {
