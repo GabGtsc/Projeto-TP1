@@ -1,5 +1,23 @@
 # TÉCNICAS DE PROGRAMAÇÃO 1 - ESPECIFICAÇÃO DO TRABALHO PRÁTICO
 
+## Como Executar e Depurar pelo Terminal
+
+Você pode compilar e rodar a aplicação e os testes de forma rápida utilizando os comandos diretos no terminal:
+
+- **Para compilar e executar a bateria de testes:**
+
+  ```bash
+  codeblocks --build --target="Testes" Projeto-TP1.cbp && "./bin/Testes/Projeto TP1"
+  ```
+
+- **Para compilar e executar no modo Debug:**
+
+  ```bash
+  codeblocks --build --target="Debug" Projeto-TP1.cbp && "./bin/Debug/Projeto TP1"
+  ```
+
+---
+
 ## 1. ATIVIDADES A REALIZAR
 
 1. Projetar, codificar e documentar classes domínio (*domain classes*).
@@ -64,39 +82,40 @@ Para usar o sistema de software, cada usuário deve criar uma conta informando e
 | 25 | PROPRIETÁRIO DE PRODUTO, MESTRE SCRUM |
 
 ### Regras de Negócio e Comportamento
-* Cada descrição de história de usuário deve ser composta por papel (como...), ação (eu quero...) e valor (para...).
-* Ao criar projeto, Proprietário de Produto deve associá-lo a um Mestre Scrum.
-* Ao criar história de usuário, Proprietário de Produto deve associá-la a projeto e informar que estado da história de usuário é "a fazer".
-* Ao criar um plano de sprint, Mestre Scrum deve associá-lo a projeto.
-* A soma das capacidades dos planos de sprint deve ser menor ou igual ao número de dias entre as datas de início e término do projeto.
-* A soma das estimativas das histórias de usuário associadas a um plano de sprint, deve ser menor ou igual à capacidade do plano de sprint.
-* A listagem de entidades (plano de sprint, história de usuário etc.) deve resultar na apresentação do código de cada entidade listada.
-* A leitura de entidade (plano de sprint, história de usuário etc.) deve resultar na apresentação dos dados da entidade.
-* Não deve ser possível editar dado que identifique entidade (chave primária).
-* O sistema de software deve assegurar as multiplicidades informadas no diagrama de classes e não deve possibilitar que exclusões resultem em inconsistências.
+
+- Cada descrição de história de usuário deve ser composta por papel (como...), ação (eu quero...) e valor (para...).
+- Ao criar projeto, Proprietário de Produto deve associá-lo a um Mestre Scrum.
+- Ao criar história de usuário, Proprietário de Produto deve associá-la a projeto e informar que estado da história de usuário é "a fazer".
+- Ao criar um plano de sprint, Mestre Scrum deve associá-lo a projeto.
+- A soma das capacidades dos planos de sprint deve ser menor ou igual ao número de dias entre as datas de início e término do projeto.
+- A soma das estimativas das histórias de usuário associadas a um plano de sprint, deve ser menor ou igual à capacidade do plano de sprint.
+- A listagem de entidades (plano de sprint, história de usuário etc.) deve resultar na apresentação do código de cada entidade listada.
+- A leitura de entidade (plano de sprint, história de usuário etc.) deve resultar na apresentação dos dados da entidade.
+- Não deve ser possível editar dado que identifique entidade (chave primária).
+- O sistema de software deve assegurar as multiplicidades informadas no diagrama de classes e não deve possibilitar que exclusões resultem em inconsistências.
 
 ### Diagrama de Classes (Representação de Entidades e Relacionamentos)
 
-* **Pessoa**
-  * Atributos: `<<PK>> email: EMAIL`, `nome: Nome`, `senha: Senha`, `papel: Papel`
-  * Relacionamentos: 
-    * 1 (Proprietário de produto) -> 0..* **Projeto**
-    * 1 (Mestre Scrum) -> 0..* **Projeto**
-    * 0..1 (Desenvolvedor) -> 0..* **História de usuário**
+- **Pessoa**
+  - Atributos: `<<PK>> email: EMAIL`, `nome: Nome`, `senha: Senha`, `papel: Papel`
+  - Relacionamentos:
+    - 1 (Proprietário de produto) -> 0..* **Projeto**
+    - 1 (Mestre Scrum) -> 0..* **Projeto**
+    - 0..1 (Desenvolvedor) -> 0..* **História de usuário**
 
-* **Projeto**
-  * Atributos: `<<PK>> código: Código`, `nome: Nome`, `início: Data`, `término: Data`
-  * Relacionamentos:
-    * 1 -> 0..* **História de usuário**
-    * 1 -> 0..* **Plano de Sprint**
+- **Projeto**
+  - Atributos: `<<PK>> código: Código`, `nome: Nome`, `início: Data`, `término: Data`
+  - Relacionamentos:
+    - 1 -> 0..* **História de usuário**
+    - 1 -> 0..* **Plano de Sprint**
 
-* **Plano de Sprint**
-  * Atributos: `<<PK>> código: Código`, `objetivo: Texto`, `capacidade: Tempo`
-  * Relacionamentos:
-    * 1 -> 0..* **História de usuário**
+- **Plano de Sprint**
+  - Atributos: `<<PK>> código: Código`, `objetivo: Texto`, `capacidade: Tempo`
+  - Relacionamentos:
+    - 1 -> 0..* **História de usuário**
 
-* **História de usuário**
-  * Atributos: `<<PK>> código: Código`, `título: Texto`, `papel: Texto`, `ação: Texto`, `valor: Texto`, `estimativa: Tempo`, `prioridade: Prioridade`, `estado: Estado`
+- **História de usuário**
+  - Atributos: `<<PK>> código: Código`, `título: Texto`, `papel: Texto`, `ação: Texto`, `valor: Texto`, `estimativa: Tempo`, `prioridade: Prioridade`, `estado: Estado`
 
 ### Tabela de Domínios
 
@@ -176,14 +195,14 @@ Para usar o sistema de software, cada usuário deve criar uma conta informando e
 
 A estrutura hierárquica do software é organizada da seguinte forma:
 
-* **APRESENTAÇÃO**
-  * Comunica-se diretamente com a camada de **SERVIÇO**.
-* **SERVIÇO**
-  * Gerencia os acessos e regras de negócio acessando as bases de dados:
-    * PESSOAS
-    * PROJETOS
-    * PLANOS DE SPRINT
-    * HISTÓRIAS DE USUÁRIO
+- **APRESENTAÇÃO**
+  - Comunica-se diretamente com a camada de **SERVIÇO**.
+- **SERVIÇO**
+  - Gerencia os acessos e regras de negócio acessando as bases de dados:
+    - PESSOAS
+    - PROJETOS
+    - PLANOS DE SPRINT
+    - HISTÓRIAS DE USUÁRIO
 
 ---
 
