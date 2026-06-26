@@ -1,5 +1,5 @@
 #include "doctest.h"
-#include "Prioridade.hpp"
+#include "../dominios/Prioridade.hpp"
 
 TEST_CASE("Testando o Dominio Prioridade") {
     SUBCASE("Valores validos") {

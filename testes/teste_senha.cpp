@@ -1,5 +1,5 @@
 #include "doctest.h"
-#include "Senha.hpp"
+#include "../dominios/Senha.hpp"
 
 TEST_CASE("Testando o Dominio Senha") {
     SUBCASE("Valores validos") {
