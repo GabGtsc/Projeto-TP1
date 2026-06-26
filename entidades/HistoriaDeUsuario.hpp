@@ -103,9 +103,7 @@ public:
    * @brief Armazena a prioridade da história de usuário.
    * @param prioridade Instância da classe de domínio Prioridade.
    */
-  void setPrioridade(const Prioridade &prioridade) {
-    this->prioridade = prioridade;
-  }
+  void setPrioridade(const Prioridade &prioridade) { this->prioridade = prioridade; }
 
   /**
    * @brief Retorna a prioridade da história de usuário.
