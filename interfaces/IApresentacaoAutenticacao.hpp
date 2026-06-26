@@ -2,6 +2,6 @@
 
 class IApresentacaoAutenticacao {
 public:
-  ~IApresentacaoAutenticacao() = default;
+  virtual ~IApresentacaoAutenticacao() = default;
   virtual void executar() = 0;
 };
