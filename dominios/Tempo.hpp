@@ -35,6 +35,7 @@ public:
    *
    * @param tempo Inteiro com valor inicial
    */
+  Tempo() = default;
   Tempo(int tempo) { setTempo(tempo); };
 
   /**

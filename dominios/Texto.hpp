@@ -40,6 +40,7 @@ public:
      *
      * @param texto String com valor inicial
      */
+    Texto() = default;
     Texto(const std::string &texto) { setTexto(texto); };
 
     /**

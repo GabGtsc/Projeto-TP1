@@ -31,6 +31,7 @@ public:
    *
    * @param estado String com valor inicial para estado
    */
+  Estado() = default;
   Estado(const std::string estado) { setEstado(estado); };
 
   /**

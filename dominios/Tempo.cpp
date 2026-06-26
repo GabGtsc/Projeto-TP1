@@ -1,4 +1,5 @@
 #include "Tempo.hpp"
+#include <stdexcept>
 
 void Tempo::validar(int tempo) {
     if (tempo < 1 || tempo > 365) {

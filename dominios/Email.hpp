@@ -58,7 +58,7 @@ public:
    * @brief Recupera o e-mail atualmente armazenado.
    * * @return std::string correspondente ao e-mail válido da instância.
    */
-  std::string const getEmail() { return email_; }
+  std::string getEmail() const { return email_; }
 
   /**
    * @brief Método auxiliar para validação de caracteres.
