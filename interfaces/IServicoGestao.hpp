@@ -1,6 +1,11 @@
 #pragma once
 
+#include <vector>
+
 #include "../dominios/Codigo.cpp"
+#include "../dominios/Email.hpp"
+#include "../dominios/Estado.cpp"
+
 #include "../entidades/HistoriaDeUsuario.hpp"
 #include "../entidades/PlanoDeSprint.hpp"
 #include "../entidades/Projeto.hpp"
@@ -26,4 +31,32 @@ public:
   virtual bool lerHistoriaDeUsuario(const Codigo &codigo, const HistoriaDeUsuario &historia) = 0;
   virtual bool atualizarHistoriaDeUsuario(const HistoriaDeUsuario &historia) = 0;
   virtual bool excluirHistoriaDeUsuario(const Codigo &codigo) = 0;
+
+  // ID 17: Estabelecer Associação entre História de Usuário e Pessoa
+  virtual bool associarHistoriaPessoa(const Codigo &codigoHistoria, const Email &emailPessoa) = 0;
+
+  // ID 18: Remover Associação entre História de Usuário e Pessoa
+  virtual bool desassociarHistoriaPessoa(const Codigo &codigoHistoria, const Email &emailPessoa) = 0;
+
+  // ID 19: Listar Projetos associados a Pessoa
+  virtual std::vector<Codigo> listarProjetosDePessoa(const Email &emailPessoa) = 0;
+
+  // ID 20: Listar Histórias de Usuário associadas a Projeto
+  virtual std::vector<Codigo> listarHistoriasDeProjeto(const Codigo &codigoProjeto) = 0;
+
+  // ID 21: Listar Planos de Sprint associados a Projeto
+  virtual std::vector<Codigo> listarSprintsDeProjeto(const Codigo &codigoProjeto) = 0;
+
+  // ID 22: Listar Histórias de Usuário associadas a Plano de Sprint
+  virtual std::vector<Codigo> listarHistoriasDeSprint(const Codigo &codigoSprint) = 0;
+
+  // ID 23: Listar Histórias de Usuário associadas a Pessoa
+  virtual std::vector<Codigo> listarHistoriasDePessoa(const Email &emailPessoa) = 0;
+
+  // ID 24: Mover História de Usuário de Projeto para Plano de Sprint
+  virtual bool moverHistoriaParaSprint(const Codigo &codigoHistoria, const Codigo &codigoProjeto,
+                                       const Codigo &codigoSprint) = 0;
+
+  // ID 25: Alterar Estado de História de Usuário (A Fazer -> Fazendo -> Feito)
+  virtual bool alterarEstadoHistoria(const Codigo &codigoHistoria, const Estado &novoEstado) = 0;
 };
