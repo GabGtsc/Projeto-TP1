@@ -11,10 +11,8 @@ void Data::setData(const std::string &data) {
   if (data.length() != 10)
     throw std::invalid_argument("Data deve ter 10 char");
 
-  if (!isdigit(data[0]) || !isdigit(data[1]) || data[2] != '/' ||
-      !isdigit(data[3]) || !isdigit(data[4]) || data[5] != '/' ||
-      !isdigit(data[6]) || !isdigit(data[7]) || !isdigit(data[8]) ||
-      !isdigit(data[9]))
+  if (!isdigit(data[0]) || !isdigit(data[1]) || data[2] != '/' || !isdigit(data[3]) || !isdigit(data[4]) ||
+      data[5] != '/' || !isdigit(data[6]) || !isdigit(data[7]) || !isdigit(data[8]) || !isdigit(data[9]))
     throw std::invalid_argument("Formato errado: Data deve seguir dd/mm/aaaa");
 
   int dia = ((data[0] - '0') * 10) + (data[1] - '0');
@@ -28,14 +26,12 @@ void Data::setData(const std::string &data) {
   if (dia < 1)
     throw std::invalid_argument("Dia não pode ser menor que 1");
 
-  const std::vector<int> dias_por_mes = {31, 28, 31, 30, 31, 30,
-                                         31, 31, 30, 31, 30, 31};
+  const std::vector<int> dias_por_mes = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
   bool bissexto = (ano % 4 == 0);
 
   if (mes == 2) {
-    if ((bissexto && dia > dias_por_mes[mes - 1] + 1) ||
-        (!bissexto && dia > dias_por_mes[mes - 1]))
+    if ((bissexto && dia > dias_por_mes[mes - 1] + 1) || (!bissexto && dia > dias_por_mes[mes - 1]))
       throw std::invalid_argument("Dias demais para o mês dado");
   } else {
     if (dia > dias_por_mes[mes - 1])
@@ -49,6 +45,4 @@ void Data::setData(const std::string &data) {
 
 Data::Data(const std::string &data) { setData(data); }
 
-std::string Data::getData() const {
-  return std::format("{:02}/{:02}/{}", this->dia_, this->mes_, this->ano_);
-}
+std::string Data::getData() const { return std::format("{:02}/{:02}/{}", this->dia_, this->mes_, this->ano_); }
