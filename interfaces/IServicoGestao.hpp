@@ -2,9 +2,9 @@
 
 #include <vector>
 
-#include "../dominios/Codigo.cpp"
+#include "../dominios/Codigo.hpp"
 #include "../dominios/Email.hpp"
-#include "../dominios/Estado.cpp"
+#include "../dominios/Estado.hpp"
 
 #include "../entidades/HistoriaDeUsuario.hpp"
 #include "../entidades/PlanoDeSprint.hpp"
