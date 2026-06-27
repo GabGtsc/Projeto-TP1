@@ -4,8 +4,8 @@
 #include "../dominios/Senha.hpp"
 
 class IServicoAutenticacao {
-  virtual bool autenticar(const Email &email, const Senha &senha) = 0;
 
 public:
+  virtual bool autenticar(const Email &email, const Senha &senha) = 0;
   virtual ~IServicoAutenticacao() = default;
 };
