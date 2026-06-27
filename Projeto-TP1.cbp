@@ -85,50 +85,79 @@
 		<Unit filename="entidades/Pessoa.hpp" />
 		<Unit filename="entidades/PlanoDeSprint.hpp" />
 		<Unit filename="entidades/Projeto.hpp" />
+		<Unit filename="interfaces/IApresentacaoAutenticacao.hpp" />
+		<Unit filename="interfaces/IApresentacaoCadastro.hpp" />
+		<Unit filename="interfaces/IApresentacaoGestao.hpp" />
+		<Unit filename="interfaces/IServicoAutenticacao.hpp" />
+		<Unit filename="interfaces/IServicoCadastro.hpp" />
+		<Unit filename="interfaces/IServicoGestao.hpp" />
+		<Unit filename="main.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="servico/stubs/StubServicoAutenticacao.hpp" />
+		<Unit filename="servico/stubs/StubServicoCadastro.hpp" />
+		<Unit filename="servico/stubs/StubServicoGestao.hpp" />
+		<Unit filename="testes/doctest.h">
+			<Option target="Testes" />
+		</Unit>
 		<Unit filename="testes/teste_codigo.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="testes/teste_data.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="testes/teste_email.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="testes/teste_estado.cpp">
 			<Option target="Testes" />
 		</Unit>
 		<Unit filename="testes/teste_historia_de_usuario.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="testes/teste_main.cpp">
 			<Option target="Testes" />
 		</Unit>
 		<Unit filename="testes/teste_nome.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="testes/teste_papel.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="testes/teste_pessoa.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="testes/teste_plano_de_sprint.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="testes/teste_prioridade.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="testes/teste_projeto.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="testes/teste_senha.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="testes/teste_tempo.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="testes/teste_texto.cpp">
 			<Option target="Testes" />
+			<Option target="Release" />
 		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />
