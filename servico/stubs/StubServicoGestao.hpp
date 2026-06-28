@@ -16,17 +16,17 @@ private:
   bool resultado = true;
 
 public:
-  bool criarProjeto(const Projeto &projeto) override { return this->resultado; }
+  bool criarProjeto(const Projeto &projeto, const Email &emailPO, const Email &emailSM) override { return this->resultado; }
   bool lerProjeto(const Codigo &codigo, const Projeto &projeto) override { return this->resultado; }
   bool atualizarProjeto(const Projeto &projeto) override { return this->resultado; }
   bool excluirProjeto(const Codigo &codigo) override { return this->resultado; }
 
-  bool criarPlanoDeSprint(const PlanoDeSprint &plano) override { return this->resultado; }
+  bool criarPlanoDeSprint(const PlanoDeSprint &plano, const Codigo &codigoProjeto) override { return this->resultado; }
   bool lerPlanoDeSprint(const Codigo &codigo, const PlanoDeSprint &plano) override { return this->resultado; }
   bool atualizarPlanoDeSprint(const PlanoDeSprint &plano) override { return this->resultado; }
   bool excluirPlanoDeSprint(const Codigo &codigo) override { return this->resultado; }
 
-  bool criarHistoriaDeUsuario(const HistoriaDeUsuario &historia) override { return this->resultado; }
+  bool criarHistoriaDeUsuario(const HistoriaDeUsuario &historia, const Codigo &codigoProjeto) override { return this->resultado; }
   bool lerHistoriaDeUsuario(const Codigo &codigo, const HistoriaDeUsuario &historia) override {
     return this->resultado;
   }

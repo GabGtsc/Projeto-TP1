@@ -65,6 +65,8 @@
 		<Unit filename="apresentacao/controladoras/CntrApresentacaoAutenticacao.hpp" />
 		<Unit filename="apresentacao/controladoras/CntrApresentacaoCadastro.cpp" />
 		<Unit filename="apresentacao/controladoras/CntrApresentacaoCadastro.hpp" />
+		<Unit filename="apresentacao/controladoras/CntrApresentacaoGestao.cpp" />
+		<Unit filename="apresentacao/controladoras/CntrApresentacaoGestao.hpp" />
 		<Unit filename="dados/CntrDados.cpp" />
 		<Unit filename="dados/CntrDados.hpp" />
 		<Unit filename="dados/ContPessoas.cpp" />
@@ -101,6 +103,7 @@
 		<Unit filename="interfaces/IServicoAutenticacao.hpp" />
 		<Unit filename="interfaces/IServicoCadastro.hpp" />
 		<Unit filename="interfaces/IServicoGestao.hpp" />
+		<Unit filename="interfaces/Sessao.hpp" />
 		<Unit filename="main.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
