@@ -71,14 +71,6 @@ void Email::ValidarEmail(const std::string &email) {
 }
 
 void Email::setEmail(const std::string &email) {
-  try {
-    ValidarEmail(email);
-
-    std::cout << "Email registrado com sucesso!" << std::endl;
-    email_ = email;
-  }
-
-  catch (const std::exception &e) {
-    std::cout << "Erro ao registrar: " << e.what() << std::endl;
-  }
+  ValidarEmail(email);
+  email_ = email;
 }
