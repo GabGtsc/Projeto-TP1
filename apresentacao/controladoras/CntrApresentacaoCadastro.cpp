@@ -4,11 +4,8 @@
 
 namespace {
     void limparTela() {
-#if defined _WIN32
-        std::system("cls");
-#else
-        std::system("clear");
-#endif
+        std::cout << "\x1B[2J\x1B[H";
+        std::cout.flush();
     }
 }
 

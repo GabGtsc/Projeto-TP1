@@ -12,6 +12,11 @@ private:
 
 public:
   bool autenticar(const Email &email, const Senha &senha, Nome &nome) override {
+      (void)email;
+      (void)senha;
+      if (this->resultado) {
+          nome.setNome("Stub");
+      }
       return this->resultado;
   }
 };

@@ -17,7 +17,8 @@ public:
    *
    * @param email E-mail da pessoa a ser consultada.
    * @param pessoa Referência onde a pessoa encontrada será populada.
-   * @return true se a pessoa foi encontrada, false caso contrário.
+   * @return true se a pessoa foi encontrada.
+   * @throw std::invalid_argument se a pessoa não for encontrada.
    */
   virtual bool obterPessoa(const Email &email, Pessoa &pessoa) = 0;
 

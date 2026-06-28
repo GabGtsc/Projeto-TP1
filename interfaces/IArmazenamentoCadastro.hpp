@@ -15,7 +15,8 @@ public:
   /**
    * @brief Cria um registro de pessoa no armazenamento.
    * @param pessoa Objeto pessoa contendo os dados a serem salvos.
-   * @return true em caso de sucesso, false caso contrário (ex: e-mail já existe).
+   * @return true em caso de sucesso.
+   * @throw std::invalid_argument se o e-mail já existir.
    */
   virtual bool criar(const Pessoa &pessoa) = 0;
 
@@ -23,7 +24,8 @@ public:
    * @brief Lê os dados de uma pessoa através do seu e-mail.
    * @param email Chave primária (e-mail) da pessoa a ser lida.
    * @param pessoa Referência que será populada com os dados recuperados.
-   * @return true se encontrada, false caso não exista.
+   * @return true se encontrada.
+   * @throw std::invalid_argument se a pessoa não existir.
    */
   virtual bool ler(const Email &email, Pessoa &pessoa) = 0;
 

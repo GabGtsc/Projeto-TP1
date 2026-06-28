@@ -8,11 +8,8 @@
 #include <string>
 
 void limparTelaPrincipal() {
-#if defined _WIN32
-    std::system("cls");
-#else
-    std::system("clear");
-#endif
+    std::cout << "\x1B[2J\x1B[H";
+    std::cout.flush();
 }
 
 int main() {
@@ -23,7 +20,7 @@ int main() {
   CntrServicoAutenticacao *servicoAuth = new CntrServicoAutenticacao(cntrDados);
   CntrServicoCadastro *servicoCad = new CntrServicoCadastro(cntrDados);
 
-  // Instancia as controladoras de apresentação injetando os stubs
+  // Instancia as controladoras de apresentação injetando os serviços
   CntrApresentacaoAutenticacao ctrlAuth(servicoAuth);
   CntrApresentacaoCadastro ctrlCad(servicoCad);
 
