@@ -3,7 +3,7 @@
 #include "apresentacao/controladoras/CntrApresentacaoGestao.hpp"
 #include "servico/controladoras/CntrServicoAutenticacao.hpp"
 #include "servico/controladoras/CntrServicoCadastro.hpp"
-#include "servico/stubs/StubServicoGestao.hpp"
+#include "servico/controladoras/CntrServicoGestao.hpp"
 #include "dados/CntrDados.hpp"
 #include <iostream>
 #include <cstdlib>
@@ -22,8 +22,8 @@ int main() {
   CntrServicoAutenticacao *servicoAuth = new CntrServicoAutenticacao(cntrDados);
   CntrServicoCadastro *servicoCad = new CntrServicoCadastro(cntrDados);
   
-  // Stubs temporarios para Gestão
-  StubServicoGestao *servicoGestao = new StubServicoGestao();
+  CntrServicoGestao *servicoGestao = new CntrServicoGestao();
+  servicoGestao->setArmazenamento(cntrDados);
 
   // Instancia as controladoras de apresentação injetando os serviços
   CntrApresentacaoAutenticacao ctrlAuth(servicoAuth);
