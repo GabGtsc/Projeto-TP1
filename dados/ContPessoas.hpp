@@ -4,7 +4,6 @@
 #include "../entidades/Pessoa.hpp"
 #include <map>
 #include <string>
-#include <stdexcept>
 
 /**
  * @class ContPessoas
