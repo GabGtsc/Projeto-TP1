@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-DDEBUG" />
 					<Add option="-fsanitize=address" />
 					<Add option="-fsanitize=undefined" />
 				</Compiler>
@@ -65,10 +66,18 @@
 		<Unit filename="apresentacao/controladoras/CntrApresentacaoAutenticacao.hpp" />
 		<Unit filename="apresentacao/controladoras/CntrApresentacaoCadastro.cpp" />
 		<Unit filename="apresentacao/controladoras/CntrApresentacaoCadastro.hpp" />
+		<Unit filename="apresentacao/controladoras/CntrApresentacaoGestao.cpp" />
+		<Unit filename="apresentacao/controladoras/CntrApresentacaoGestao.hpp" />
 		<Unit filename="dados/CntrDados.cpp" />
 		<Unit filename="dados/CntrDados.hpp" />
 		<Unit filename="dados/ContPessoas.cpp" />
 		<Unit filename="dados/ContPessoas.hpp" />
+		<Unit filename="dados/ContProjetos.cpp" />
+		<Unit filename="dados/ContProjetos.hpp" />
+		<Unit filename="dados/ContPlanos.cpp" />
+		<Unit filename="dados/ContPlanos.hpp" />
+		<Unit filename="dados/ContHistorias.cpp" />
+		<Unit filename="dados/ContHistorias.hpp" />
 		<Unit filename="dominios/Codigo.cpp" />
 		<Unit filename="dominios/Codigo.hpp" />
 		<Unit filename="dominios/Data.cpp" />
@@ -95,12 +104,14 @@
 		<Unit filename="entidades/Projeto.hpp" />
 		<Unit filename="interfaces/IArmazenamentoAutenticacao.hpp" />
 		<Unit filename="interfaces/IArmazenamentoCadastro.hpp" />
+		<Unit filename="interfaces/IArmazenamentoGestao.hpp" />
 		<Unit filename="interfaces/IApresentacaoAutenticacao.hpp" />
 		<Unit filename="interfaces/IApresentacaoCadastro.hpp" />
 		<Unit filename="interfaces/IApresentacaoGestao.hpp" />
 		<Unit filename="interfaces/IServicoAutenticacao.hpp" />
 		<Unit filename="interfaces/IServicoCadastro.hpp" />
 		<Unit filename="interfaces/IServicoGestao.hpp" />
+		<Unit filename="interfaces/Sessao.hpp" />
 		<Unit filename="main.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
@@ -109,6 +120,8 @@
 		<Unit filename="servico/controladoras/CntrServicoAutenticacao.hpp" />
 		<Unit filename="servico/controladoras/CntrServicoCadastro.cpp" />
 		<Unit filename="servico/controladoras/CntrServicoCadastro.hpp" />
+		<Unit filename="servico/controladoras/CntrServicoGestao.cpp" />
+		<Unit filename="servico/controladoras/CntrServicoGestao.hpp" />
 		<Unit filename="servico/stubs/StubServicoAutenticacao.hpp" />
 		<Unit filename="servico/stubs/StubServicoCadastro.hpp" />
 		<Unit filename="servico/stubs/StubServicoGestao.hpp" />

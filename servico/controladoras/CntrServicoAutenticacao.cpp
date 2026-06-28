@@ -1,7 +1,7 @@
 #include "CntrServicoAutenticacao.hpp"
 #include <stdexcept>
 
-bool CntrServicoAutenticacao::autenticar(const Email &email, const Senha &senha, Nome &nome) {
+bool CntrServicoAutenticacao::autenticar(const Email &email, const Senha &senha, Nome &nome, Papel &papel) {
   Pessoa pessoa;
   try {
     // Tenta obter a pessoa do armazenamento
@@ -14,6 +14,7 @@ bool CntrServicoAutenticacao::autenticar(const Email &email, const Senha &senha,
   // Verifica se a senha armazenada é igual à fornecida
   if (pessoa.getSenha().getSenha() == senha.getSenha()) {
     nome = pessoa.getNome();
+    papel = pessoa.getPapel();
     return true; // Autenticado com sucesso
   }
   

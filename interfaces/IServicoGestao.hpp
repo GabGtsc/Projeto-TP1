@@ -15,20 +15,20 @@ public:
   virtual ~IServicoGestao() = default;
 
   // servicos de projeto ID 5 - 8
-  virtual bool criarProjeto(const Projeto &projeto) = 0;
-  virtual bool lerProjeto(const Codigo &codigo, const Projeto &projeto) = 0;
+  virtual bool criarProjeto(const Projeto &projeto, const Email &emailPO, const Email &emailSM) = 0;
+  virtual bool lerProjeto(const Codigo &codigo, Projeto &projeto) = 0;
   virtual bool atualizarProjeto(const Projeto &projeto) = 0;
   virtual bool excluirProjeto(const Codigo &codigo) = 0;
 
   // servicos de plano de sprint ID 9 - 12
-  virtual bool criarPlanoDeSprint(const PlanoDeSprint &plano) = 0;
-  virtual bool lerPlanoDeSprint(const Codigo &codigo, const PlanoDeSprint &plano) = 0;
+  virtual bool criarPlanoDeSprint(const PlanoDeSprint &plano, const Codigo &codigoProjeto) = 0;
+  virtual bool lerPlanoDeSprint(const Codigo &codigo, PlanoDeSprint &plano) = 0;
   virtual bool atualizarPlanoDeSprint(const PlanoDeSprint &plano) = 0;
   virtual bool excluirPlanoDeSprint(const Codigo &codigo) = 0;
 
   // servicos de historia de usuario ID 13 - 16
-  virtual bool criarHistoriaDeUsuario(const HistoriaDeUsuario &historia) = 0;
-  virtual bool lerHistoriaDeUsuario(const Codigo &codigo, const HistoriaDeUsuario &historia) = 0;
+  virtual bool criarHistoriaDeUsuario(const HistoriaDeUsuario &historia, const Codigo &codigoProjeto) = 0;
+  virtual bool lerHistoriaDeUsuario(const Codigo &codigo, HistoriaDeUsuario &historia) = 0;
   virtual bool atualizarHistoriaDeUsuario(const HistoriaDeUsuario &historia) = 0;
   virtual bool excluirHistoriaDeUsuario(const Codigo &codigo) = 0;
 
@@ -40,6 +40,9 @@ public:
 
   // ID 19: Listar Projetos associados a Pessoa
   virtual std::vector<Codigo> listarProjetosDePessoa(const Email &emailPessoa) = 0;
+  
+  // Extra: Listar TODOS os Projetos registrados
+  virtual std::vector<Codigo> listarTodosProjetos() = 0;
 
   // ID 20: Listar Histórias de Usuário associadas a Projeto
   virtual std::vector<Codigo> listarHistoriasDeProjeto(const Codigo &codigoProjeto) = 0;

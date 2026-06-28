@@ -6,7 +6,7 @@ TEST_CASE("Pessoa - Armazenamento de Atributos") {
 
   Email email("teste-123@dominio.com");
   Nome nome("Ana Maria");
-  Senha senha("Senha1A2b3");
+  Senha senha("A1b2C3");
   Papel papel("DESENVOLVEDOR");
 
   pessoa.setEmail(email);
@@ -16,6 +16,6 @@ TEST_CASE("Pessoa - Armazenamento de Atributos") {
 
   CHECK(pessoa.getEmail().getEmail() == "teste-123@dominio.com");
   CHECK(pessoa.getNome().getNome() == "Ana Maria");
-  CHECK(pessoa.getSenha().getSenha() == "Senha1A2b3");
+  CHECK(pessoa.getSenha().getSenha() == "A1b2C3");
   CHECK(pessoa.getPapel().getPapel() == "DESENVOLVEDOR");
 }

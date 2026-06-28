@@ -18,6 +18,25 @@ Você pode compilar e rodar a aplicação e os testes de forma rápida utilizand
 
 ---
 
+### Dados de Teste (Mock Data) no Modo Debug
+
+Ao executar o sistema compilado com o target `Debug`, os seguintes dados estarão automaticamente disponíveis na memória para facilitar a simulação do sistema e a navegação nos menus:
+
+**Usuários (Autenticação):**
+- **Proprietário de Produto:** `po@a.com` | Senha: `A1a2B3`
+- **Mestre Scrum:** `sm@a.com` | Senha: `A1a2B3`
+- **Desenvolvedor:** `dv@a.com` | Senha: `A1a2B3`
+
+**Projetos (Gestão):**
+- **Projeto Alfa** (Cód: `PA001`): Vinculado ao PO (`po@a.com`) e SM (`sm@a.com`).
+  - **Plano de Sprint:** `SA001` (Capacidade: 30 dias)
+  - **Histórias de Usuário:** `HA001`, `HA002`, `HA003` (Atribuídas ao DEV `dv@a.com`)
+- **Projeto Beta** (Cód: `PB002`): Vinculado ao PO (`po@a.com`) e SM (`sm@a.com`).
+  - **Plano de Sprint:** `SB002` (Capacidade: 20 dias)
+  - **Histórias de Usuário:** `HB004`, `HB005`, `HB006` (Atribuídas ao DEV `dv@a.com`)
+
+---
+
 ## 1. ATIVIDADES A REALIZAR
 
 1. Projetar, codificar e documentar classes domínio (*domain classes*).

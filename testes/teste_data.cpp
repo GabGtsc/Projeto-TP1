@@ -22,5 +22,6 @@ TEST_CASE("Data - Invalida (Limites e Anos Bissextos)") {
   CHECK_THROWS_AS(Data("00/12/2000"), std::invalid_argument);
   CHECK_THROWS_AS(Data("12/13/2000"), std::invalid_argument);
   CHECK_THROWS_AS(Data("12/12/1999"), std::invalid_argument);
-  CHECK_THROWS_AS(Data("12/12/2100"), std::invalid_argument);
+  CHECK_THROWS_AS(Data("12/12/3000"), std::invalid_argument);
+  CHECK_THROWS_AS(Data("29/02/2100"), std::invalid_argument); // 2100 nao eh bissexto
 }
