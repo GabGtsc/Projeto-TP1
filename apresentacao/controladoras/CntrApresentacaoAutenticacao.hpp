@@ -32,7 +32,7 @@ public:
      * Exibe os menus no terminal, solicita os dados, trata possíveis exceções 
      * de formatação incorreta lançadas pelos domínios e informa o resultado 
      * da tentativa de autenticação.
-     * @return Um struct ResultadoAutenticacao contendo o status de sucesso e o Email logado (se houver).
+     * @return Um struct Sessao contendo o status de sucesso e os dados da pessoa (se logado).
      */
-    ResultadoAutenticacao executar() override;
+    Sessao executar() override;
 };

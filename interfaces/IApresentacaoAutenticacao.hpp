@@ -1,20 +1,6 @@
 #pragma once
 
-#include "../dominios/Email.hpp"
-#include "../dominios/Nome.hpp"
-
-/**
- * @struct ResultadoAutenticacao
- * @brief Estrutura que encapsula o resultado de uma tentativa de autenticação.
- * 
- * Contém o status de sucesso da operação e, caso o login tenha sido bem-sucedido, 
- * armazena o objeto Email correspondente ao usuário autenticado.
- */
-struct ResultadoAutenticacao {
-    bool sucesso; ///< Indica se a autenticação foi realizada com sucesso (true) ou não (false).
-    Email email;  ///< Instância do domínio Email contendo o e-mail validado do usuário (se sucesso == true).
-    Nome nome;    ///< Instância do domínio Nome contendo o nome do usuário autenticado.
-};
+#include "Sessao.hpp"
 
 /**
  * @class IApresentacaoAutenticacao
@@ -36,7 +22,7 @@ public:
    * Método responsável por coletar os dados do usuário, interagir com a camada 
    * de serviço para verificar as credenciais e tratar as saídas/erros para o usuário.
    * 
-   * @return Um struct ResultadoAutenticacao contendo o status de sucesso e o e-mail autenticado.
+   * @return Um struct Sessao contendo o status de sucesso e os dados da pessoa autenticada.
    */
-  virtual ResultadoAutenticacao executar() = 0;
+  virtual Sessao executar() = 0;
 };

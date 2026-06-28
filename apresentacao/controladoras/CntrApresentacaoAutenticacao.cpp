@@ -11,11 +11,11 @@ namespace {
     }
 }
 
-ResultadoAutenticacao CntrApresentacaoAutenticacao::executar() {
+Sessao CntrApresentacaoAutenticacao::executar() {
     std::string entradaEmail, entradaSenha;
     Email emailInstancia;
     Senha senhaInstancia;
-    ResultadoAutenticacao resultado = {false, Email()};
+    Sessao resultado = {false, Email(), Nome(), Papel()};
     std::string mensagemErro = "";
 
     while (true) {
@@ -44,11 +44,13 @@ ResultadoAutenticacao CntrApresentacaoAutenticacao::executar() {
             senhaInstancia.setSenha(entradaSenha);
 
             Nome nomeInstancia;
-            if (servico->autenticar(emailInstancia, senhaInstancia, nomeInstancia)) {
+            Papel papelInstancia;
+            if (servico->autenticar(emailInstancia, senhaInstancia, nomeInstancia, papelInstancia)) {
                 // Sucesso na autenticação
-                resultado.sucesso = true;
+                resultado.logado = true;
                 resultado.email = emailInstancia;
                 resultado.nome = nomeInstancia;
+                resultado.papel = papelInstancia;
                 return resultado; // Sai da tela retornando sucesso (a main cuidará de avisar o login)
             } else {
                 mensagemErro = "Email ou senha incorretos.";
