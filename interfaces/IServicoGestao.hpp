@@ -40,6 +40,9 @@ public:
 
   // ID 19: Listar Projetos associados a Pessoa
   virtual std::vector<Codigo> listarProjetosDePessoa(const Email &emailPessoa) = 0;
+  
+  // Extra: Listar TODOS os Projetos registrados
+  virtual std::vector<Codigo> listarTodosProjetos() = 0;
 
   // ID 20: Listar Histórias de Usuário associadas a Projeto
   virtual std::vector<Codigo> listarHistoriasDeProjeto(const Codigo &codigoProjeto) = 0;

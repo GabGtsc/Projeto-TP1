@@ -68,3 +68,11 @@ std::vector<std::string> ContProjetos::listarProjetosDePessoa(const std::string 
     }
     return lista;
 }
+
+std::vector<std::string> ContProjetos::listarTodosProjetos() {
+    std::vector<std::string> lista;
+    for (const auto& pair : projetos) {
+        lista.push_back(pair.first);
+    }
+    return lista;
+}

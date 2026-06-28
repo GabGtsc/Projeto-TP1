@@ -41,6 +41,7 @@ public:
   bool desassociarHistoriaPessoa(const Codigo &codigoHistoria, const Email &emailPessoa) override;
   
   std::vector<Codigo> listarProjetosDePessoa(const Email &emailPessoa) override;
+  std::vector<Codigo> listarTodosProjetos() override;
   std::vector<Codigo> listarHistoriasDeProjeto(const Codigo &codigoProjeto) override;
   std::vector<Codigo> listarSprintsDeProjeto(const Codigo &codigoProjeto) override;
   std::vector<Codigo> listarHistoriasDeSprint(const Codigo &codigoSprint) override;

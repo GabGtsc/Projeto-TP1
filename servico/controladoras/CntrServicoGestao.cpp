@@ -103,6 +103,9 @@ bool CntrServicoGestao::desassociarHistoriaPessoa(const Codigo &codigoHistoria, 
 std::vector<Codigo> CntrServicoGestao::listarProjetosDePessoa(const Email &emailPessoa) {
     return armazenamento->listarProjetosDePessoa(emailPessoa);
 }
+std::vector<Codigo> CntrServicoGestao::listarTodosProjetos() {
+    return armazenamento->listarTodosProjetos();
+}
 std::vector<Codigo> CntrServicoGestao::listarHistoriasDeProjeto(const Codigo &codigoProjeto) {
     return armazenamento->listarHistoriasDeProjeto(codigoProjeto);
 }

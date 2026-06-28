@@ -20,6 +20,7 @@ public:
   virtual bool excluirProjeto(const Codigo &codigo) = 0;
   virtual bool associarProjetoPessoa(const Codigo &codigoProjeto, const Email &emailPessoa) = 0;
   virtual std::vector<Codigo> listarProjetosDePessoa(const Email &emailPessoa) = 0;
+  virtual std::vector<Codigo> listarTodosProjetos() = 0;
 
   // PLANO DE SPRINT
   virtual bool criarPlanoDeSprint(const PlanoDeSprint &plano) = 0;

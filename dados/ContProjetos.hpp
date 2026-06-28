@@ -22,4 +22,5 @@ public:
     bool associarSM(const std::string &codigo, const std::string &email);
     
     std::vector<std::string> listarProjetosDePessoa(const std::string &email);
+    std::vector<std::string> listarTodosProjetos();
 };

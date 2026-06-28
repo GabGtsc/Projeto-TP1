@@ -42,10 +42,14 @@ private:
     
     // Sub-rotinas auxiliares
     void criarProjeto(const Sessao &sessao);
+    void atualizarProjeto(const Sessao &sessao);
+    void excluirProjeto(const Sessao &sessao);
+    void listarEVisualizarProjetos(const Sessao &sessao);
+    void listarProjetosPorPessoa(const Sessao &sessao);
+
     void criarSprint(const Sessao &sessao);
     void criarHistoria(const Sessao &sessao);
     
-    void listarEVisualizarProjetos(const Sessao &sessao);
     void listarEVisualizarSprints(const Sessao &sessao);
     void listarEVisualizarHistorias(const Sessao &sessao);
     
@@ -55,8 +59,6 @@ private:
     void moverHistoriaParaSprint(const Sessao &sessao);
 
     // Novos de Atualizar e Excluir
-    void atualizarProjeto(const Sessao &sessao);
-    void excluirProjeto(const Sessao &sessao);
     void atualizarSprint(const Sessao &sessao);
     void excluirSprint(const Sessao &sessao);
     void atualizarHistoria(const Sessao &sessao);

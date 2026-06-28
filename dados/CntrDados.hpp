@@ -80,6 +80,7 @@ public:
   bool excluirProjeto(const Codigo &codigo) override;
   bool associarProjetoPessoa(const Codigo &codigoProjeto, const Email &emailPessoa) override;
   std::vector<Codigo> listarProjetosDePessoa(const Email &emailPessoa) override;
+  std::vector<Codigo> listarTodosProjetos() override;
 
   // PLANO DE SPRINT
   bool criarPlanoDeSprint(const PlanoDeSprint &plano) override;

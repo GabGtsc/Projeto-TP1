@@ -26,8 +26,8 @@ CntrDados::CntrDados() {
         
         // --- PROJETO 1 ---
         Projeto mockProj1;
-        Codigo cMockP1; cMockP1.setCodigo("PRJ001"); mockProj1.setCodigo(cMockP1);
-        Nome nMockP1; nMockP1.setNome("Projeto Alfa"); mockProj1.setNome(nMockP1);
+        Codigo cMockP1; cMockP1.setCodigo("PA001"); mockProj1.setCodigo(cMockP1);
+        Nome nMockP1; nMockP1.setNome("Proj Alfa"); mockProj1.setNome(nMockP1);
         Data dInicio1; dInicio1.setData("01/01/2026"); mockProj1.setInicio(dInicio1);
         Data dTermino1; dTermino1.setData("31/12/2026"); mockProj1.setTermino(dTermino1);
         this->criarProjeto(mockProj1);
@@ -35,16 +35,16 @@ CntrDados::CntrDados() {
         this->associarProjetoPessoa(cMockP1, e2); // e2 = sm@a.com
         
         PlanoDeSprint mockSpr1;
-        Codigo cMockS1; cMockS1.setCodigo("SPR001"); mockSpr1.setCodigo(cMockS1);
+        Codigo cMockS1; cMockS1.setCodigo("SA001"); mockSpr1.setCodigo(cMockS1);
         Texto txMockS1; txMockS1.setTexto("Entrega do MVP"); mockSpr1.setObjetivo(txMockS1);
         Tempo tmMockS1; tmMockS1.setTempo(30); mockSpr1.setCapacidade(tmMockS1);
         this->criarPlanoDeSprint(mockSpr1);
         this->associarSprintProjeto(cMockS1, cMockP1);
         
-        // 3 Historias para o PRJ001 e SPR001
+        // 3 Historias para o PA001 e SA001
         for (int i=1; i<=3; ++i) {
             HistoriaDeUsuario hMock;
-            Codigo cHMock; cHMock.setCodigo("HST00" + std::to_string(i)); hMock.setCodigo(cHMock);
+            Codigo cHMock; cHMock.setCodigo("HA00" + std::to_string(i)); hMock.setCodigo(cHMock);
             
             Texto tTi; tTi.setTexto("Titulo alfa " + std::to_string(i)); hMock.setTitulo(tTi);
             Texto tPa; tPa.setTexto("Usuario do sistema"); hMock.setPapel(tPa);
@@ -63,8 +63,8 @@ CntrDados::CntrDados() {
         
         // --- PROJETO 2 ---
         Projeto mockProj2;
-        Codigo cMockP2; cMockP2.setCodigo("PRJ002"); mockProj2.setCodigo(cMockP2);
-        Nome nMockP2; nMockP2.setNome("Projeto Beta"); mockProj2.setNome(nMockP2);
+        Codigo cMockP2; cMockP2.setCodigo("PB002"); mockProj2.setCodigo(cMockP2);
+        Nome nMockP2; nMockP2.setNome("Proj Beta"); mockProj2.setNome(nMockP2);
         Data dInicio2; dInicio2.setData("15/05/2026"); mockProj2.setInicio(dInicio2);
         Data dTermino2; dTermino2.setData("15/10/2026"); mockProj2.setTermino(dTermino2);
         this->criarProjeto(mockProj2);
@@ -72,16 +72,16 @@ CntrDados::CntrDados() {
         this->associarProjetoPessoa(cMockP2, e2); // e2 = sm@a.com
         
         PlanoDeSprint mockSpr2;
-        Codigo cMockS2; cMockS2.setCodigo("SPR002"); mockSpr2.setCodigo(cMockS2);
+        Codigo cMockS2; cMockS2.setCodigo("SB002"); mockSpr2.setCodigo(cMockS2);
         Texto txMockS2; txMockS2.setTexto("Funcionalidade Core"); mockSpr2.setObjetivo(txMockS2);
         Tempo tmMockS2; tmMockS2.setTempo(20); mockSpr2.setCapacidade(tmMockS2);
         this->criarPlanoDeSprint(mockSpr2);
         this->associarSprintProjeto(cMockS2, cMockP2);
         
-        // 3 Historias para o PRJ002 e SPR002
+        // 3 Historias para o PB002 e SB002
         for (int i=4; i<=6; ++i) {
             HistoriaDeUsuario hMock;
-            Codigo cHMock; cHMock.setCodigo("HST00" + std::to_string(i)); hMock.setCodigo(cHMock);
+            Codigo cHMock; cHMock.setCodigo("HB00" + std::to_string(i)); hMock.setCodigo(cHMock);
             
             Texto tTi; tTi.setTexto("Titulo beta " + std::to_string(i)); hMock.setTitulo(tTi);
             Texto tPa; tPa.setTexto("Visitante comum"); hMock.setPapel(tPa);
@@ -175,6 +175,15 @@ bool CntrDados::associarProjetoPessoa(const Codigo &codigoProjeto, const Email &
 }
 std::vector<Codigo> CntrDados::listarProjetosDePessoa(const Email &emailPessoa) {
     std::vector<std::string> listaStr = contProjetos.listarProjetosDePessoa(emailPessoa.getEmail());
+    std::vector<Codigo> listaCod;
+    for (const auto &str : listaStr) {
+        Codigo c; c.setCodigo(str);
+        listaCod.push_back(c);
+    }
+    return listaCod;
+}
+std::vector<Codigo> CntrDados::listarTodosProjetos() {
+    std::vector<std::string> listaStr = contProjetos.listarTodosProjetos();
     std::vector<Codigo> listaCod;
     for (const auto &str : listaStr) {
         Codigo c; c.setCodigo(str);

@@ -75,7 +75,8 @@ void CntrApresentacaoGestao::gerenciarProjetos(const Sessao &sessao) {
             std::cout << "3 - Excluir Projeto\n";
         }
         std::cout << "4 - Listar e Visualizar Projetos\n";
-        std::cout << "5 - Voltar\n";
+        std::cout << "5 - Listar Projetos por Pessoa\n";
+        std::cout << "6 - Voltar\n";
         std::cout << "Escolha: ";
 
         std::cin >> std::ws;
@@ -90,6 +91,8 @@ void CntrApresentacaoGestao::gerenciarProjetos(const Sessao &sessao) {
         } else if (escolha == "4") {
             listarEVisualizarProjetos(sessao);
         } else if (escolha == "5") {
+            listarProjetosPorPessoa(sessao);
+        } else if (escolha == "6") {
             rodando = false;
         } else {
             mensagem = "Opcao invalida ou sem permissao.";
@@ -254,8 +257,8 @@ void CntrApresentacaoGestao::excluirProjeto(const Sessao &sessao) {
 }
 
 void CntrApresentacaoGestao::listarEVisualizarProjetos(const Sessao &sessao) {
-    std::cout << "\n--- MEUS PROJETOS ---\n";
-    std::vector<Codigo> projetos = servico->listarProjetosDePessoa(sessao.email);
+    std::cout << "\n--- PROJETOS ---\n";
+    std::vector<Codigo> projetos = servico->listarTodosProjetos();
     
     if (projetos.empty()) {
         std::cout << "Nenhum projeto encontrado.\n";
@@ -270,6 +273,40 @@ void CntrApresentacaoGestao::listarEVisualizarProjetos(const Sessao &sessao) {
             }
         }
     }
+    std::cout << "Pressione ENTER para continuar...";
+    std::string lixo;
+    std::getline(std::cin, lixo);
+}
+
+void CntrApresentacaoGestao::listarProjetosPorPessoa(const Sessao &sessao) {
+    std::cout << "\n--- LISTAR PROJETOS POR PESSOA ---\n";
+    std::string emailStr;
+    std::cout << "Digite o Email da Pessoa: ";
+    std::getline(std::cin, emailStr);
+    if (emailStr.empty()) return;
+
+    try {
+        Email email;
+        email.setEmail(emailStr);
+        std::vector<Codigo> projetos = servico->listarProjetosDePessoa(email);
+        
+        if (projetos.empty()) {
+            std::cout << "Nenhum projeto encontrado para esta pessoa.\n";
+        } else {
+            for (const auto &codigo : projetos) {
+                std::cout << "- Codigo do Projeto: " << codigo.getCodigo() << "\n";
+                Projeto p;
+                if (servico->lerProjeto(codigo, p)) {
+                    std::cout << "  Nome: " << p.getNome().getNome() << "\n";
+                    std::cout << "  Inicio: " << p.getInicio().getData() << "\n";
+                    std::cout << "  Termino: " << p.getTermino().getData() << "\n\n";
+                }
+            }
+        }
+    } catch (const std::invalid_argument &e) {
+        std::cout << "[ERRO] " << e.what() << "\n";
+    }
+
     std::cout << "Pressione ENTER para continuar...";
     std::string lixo;
     std::getline(std::cin, lixo);
