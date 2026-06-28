@@ -1,7 +1,8 @@
 #include "apresentacao/controladoras/CntrApresentacaoAutenticacao.hpp"
 #include "apresentacao/controladoras/CntrApresentacaoCadastro.hpp"
-#include "servico/stubs/StubServicoAutenticacao.hpp"
-#include "servico/stubs/StubServicoCadastro.hpp"
+#include "servico/controladoras/CntrServicoAutenticacao.hpp"
+#include "servico/controladoras/CntrServicoCadastro.hpp"
+#include "dados/CntrDados.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -15,9 +16,12 @@ void limparTelaPrincipal() {
 }
 
 int main() {
-  // Instancia os stubs de serviço
-  StubServicoAutenticacao *servicoAuth = new StubServicoAutenticacao();
-  StubServicoCadastro *servicoCad = new StubServicoCadastro();
+  // Instancia a controladora de dados
+  CntrDados *cntrDados = new CntrDados();
+
+  // Instancia os serviços injetando as interfaces de armazenamento implementadas pela controladora de dados
+  CntrServicoAutenticacao *servicoAuth = new CntrServicoAutenticacao(cntrDados);
+  CntrServicoCadastro *servicoCad = new CntrServicoCadastro(cntrDados);
 
   // Instancia as controladoras de apresentação injetando os stubs
   CntrApresentacaoAutenticacao ctrlAuth(servicoAuth);
@@ -63,6 +67,7 @@ int main() {
   // Libera a memória alocada dinamicamente
   delete servicoAuth;
   delete servicoCad;
+  delete cntrDados;
 
   return 0;
 }
