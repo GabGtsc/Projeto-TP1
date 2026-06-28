@@ -63,6 +63,8 @@
 		</Compiler>
 		<Unit filename="apresentacao/controladoras/CntrApresentacaoAutenticacao.cpp" />
 		<Unit filename="apresentacao/controladoras/CntrApresentacaoAutenticacao.hpp" />
+		<Unit filename="apresentacao/controladoras/CntrApresentacaoCadastro.cpp" />
+		<Unit filename="apresentacao/controladoras/CntrApresentacaoCadastro.hpp" />
 		<Unit filename="dominios/Codigo.cpp" />
 		<Unit filename="dominios/Codigo.hpp" />
 		<Unit filename="dominios/Data.cpp" />
