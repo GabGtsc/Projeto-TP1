@@ -5,7 +5,7 @@ TEST_CASE("PlanoDeSprint - Armazenamento de Atributos") {
   PlanoDeSprint plano;
 
   Codigo codigo("AB123");
-  Texto objetivo("Texto valido.");
+  Texto objetivo("Texto valido");
   Tempo capacidade(180);
 
   plano.setCodigo(codigo);
@@ -13,6 +13,6 @@ TEST_CASE("PlanoDeSprint - Armazenamento de Atributos") {
   plano.setCapacidade(capacidade);
 
   CHECK(plano.getCodigo().getCodigo() == "AB123");
-  CHECK(plano.getObjetivo().getTexto() == "Texto valido.");
+  CHECK(plano.getObjetivo().getTexto() == "Texto valido");
   CHECK(plano.getCapacidade().getTempo() == 180);
 }

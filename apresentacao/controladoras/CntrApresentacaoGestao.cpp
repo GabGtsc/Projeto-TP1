@@ -11,6 +11,16 @@ namespace {
         std::system("clear");
 #endif
     }
+
+    bool dataInicioMaior(const std::string& d1, const std::string& d2) {
+        int dia1 = std::stoi(d1.substr(0, 2));
+        int mes1 = std::stoi(d1.substr(3, 2));
+        int ano1 = std::stoi(d1.substr(6, 4));
+        int dia2 = std::stoi(d2.substr(0, 2));
+        int mes2 = std::stoi(d2.substr(3, 2));
+        int ano2 = std::stoi(d2.substr(6, 4));
+        return std::tie(ano1, mes1, dia1) > std::tie(ano2, mes2, dia2);
+    }
 }
 
 void CntrApresentacaoGestao::executar(const Sessao &sessao) {
@@ -136,7 +146,17 @@ void CntrApresentacaoGestao::criarProjeto(const Sessao &sessao) {
         std::cout << "Data de Termino (DD/MM/AAAA): ";
         std::getline(std::cin, entrada);
         if (entrada == "cancelar") return;
-        try { Data d; d.setData(entrada); projeto.setTermino(d); break; }
+        try { 
+            Data d; d.setData(entrada);
+            if (std::string(projeto.getInicio().getData()) != "00/00/0" && 
+                std::string(projeto.getInicio().getData()) != "00/00/0000" && 
+                !projeto.getInicio().getData().empty()) {
+                if (dataInicioMaior(projeto.getInicio().getData(), entrada)) {
+                    throw std::invalid_argument("Data de termino deve ser posterior ou igual a data de inicio.");
+                }
+            }
+            projeto.setTermino(d); break; 
+        }
         catch (const std::invalid_argument &e) { std::cout << "Erro: " << e.what() << "\n"; }
     }
 
@@ -201,6 +221,9 @@ void CntrApresentacaoGestao::atualizarProjeto(const Sessao &sessao) {
             std::getline(std::cin, entrada);
             if (!entrada.empty()) {
                 Data d; d.setData(entrada);
+                if (dataInicioMaior(projeto.getInicio().getData(), entrada)) {
+                    throw std::invalid_argument("Data de termino deve ser posterior ou igual a data de inicio.");
+                }
                 projeto.setTermino(d);
             }
 
@@ -627,6 +650,7 @@ void CntrApresentacaoGestao::criarHistoria(const Sessao &sessao) {
         std::cout << "Papel alvo (ate 40 char): ";
         std::getline(std::cin, entrada);
         if (entrada == "cancelar") return;
+        if (entrada.find("como ") != 0) entrada = "como " + entrada;
         try { Texto t; t.setTexto(entrada); historia.setPapel(t); break; }
         catch (const std::invalid_argument &e) { std::cout << "Erro: " << e.what() << "\n"; }
     }
@@ -635,6 +659,7 @@ void CntrApresentacaoGestao::criarHistoria(const Sessao &sessao) {
         std::cout << "Acao (ate 40 char): ";
         std::getline(std::cin, entrada);
         if (entrada == "cancelar") return;
+        if (entrada.find("eu quero ") != 0) entrada = "eu quero " + entrada;
         try { Texto t; t.setTexto(entrada); historia.setAcao(t); break; }
         catch (const std::invalid_argument &e) { std::cout << "Erro: " << e.what() << "\n"; }
     }
@@ -643,6 +668,7 @@ void CntrApresentacaoGestao::criarHistoria(const Sessao &sessao) {
         std::cout << "Valor (ate 40 char): ";
         std::getline(std::cin, entrada);
         if (entrada == "cancelar") return;
+        if (entrada.find("para ") != 0) entrada = "para " + entrada;
         try { Texto t; t.setTexto(entrada); historia.setValor(t); break; }
         catch (const std::invalid_argument &e) { std::cout << "Erro: " << e.what() << "\n"; }
     }
@@ -709,15 +735,24 @@ void CntrApresentacaoGestao::atualizarHistoria(const Sessao &sessao) {
 
             std::cout << "Novo Papel [" << historia.getPapel().getTexto() << "]: ";
             std::getline(std::cin, entrada);
-            if (!entrada.empty()) { Texto t; t.setTexto(entrada); historia.setPapel(t); }
+            if (!entrada.empty()) { 
+                if (entrada.find("como ") != 0) entrada = "como " + entrada;
+                Texto t; t.setTexto(entrada); historia.setPapel(t); 
+            }
 
             std::cout << "Nova Acao [" << historia.getAcao().getTexto() << "]: ";
             std::getline(std::cin, entrada);
-            if (!entrada.empty()) { Texto t; t.setTexto(entrada); historia.setAcao(t); }
+            if (!entrada.empty()) { 
+                if (entrada.find("eu quero ") != 0) entrada = "eu quero " + entrada;
+                Texto t; t.setTexto(entrada); historia.setAcao(t); 
+            }
 
             std::cout << "Novo Valor [" << historia.getValor().getTexto() << "]: ";
             std::getline(std::cin, entrada);
-            if (!entrada.empty()) { Texto t; t.setTexto(entrada); historia.setValor(t); }
+            if (!entrada.empty()) { 
+                if (entrada.find("para ") != 0) entrada = "para " + entrada;
+                Texto t; t.setTexto(entrada); historia.setValor(t); 
+            }
 
             std::cout << "Nova Estimativa [" << historia.getEstimativa().getTempo() << "]: ";
             std::getline(std::cin, entrada);

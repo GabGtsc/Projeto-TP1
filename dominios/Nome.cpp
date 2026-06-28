@@ -14,11 +14,15 @@ void Nome::setNome(const std::string &nome) {
     throw std::invalid_argument("Primeira ou ultima letra invalida!");
   }
 
-  for (int i = 0; i < nome.length(); i++) {
-    if (!(isalpha(nome[i]) || isspace(nome[i]))) {
+  for (size_t i = 0; i < nome.length(); i++) {
+    if (isspace(nome[i])) {
+      if (i + 1 < nome.length() && !isalpha(nome[i + 1])) {
+        throw std::invalid_argument("Espaco em branco deve ser seguido por letra!");
+      }
+    } else if (!isalpha(nome[i])) {
       throw std::invalid_argument("Nome invalido!");
     }
-
-    nome_ = nome;
   }
+  
+  nome_ = nome;
 }

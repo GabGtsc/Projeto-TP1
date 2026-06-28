@@ -3,18 +3,17 @@
 
 TEST_CASE("Testando o Dominio Senha") {
   SUBCASE("Valores validos") {
-    // Letras e numeros alternados (sem numeros seguidos)
-    CHECK_NOTHROW(Senha s("Senha1A2b3"));
-    // Apenas letras
-    CHECK_NOTHROW(Senha s("SenhaSegura"));
+    CHECK_NOTHROW(Senha s("A1b2C3"));
   }
 
   SUBCASE("Valores invalidos") {
-    // Contem caractere especial
-    CHECK_THROWS(Senha("Senha@123"));
-    // Contem numeros em sequencia
-    CHECK_THROWS(Senha("Senha12"));
-    // Espacos em branco nao sao permitidos por causa do isalnum
-    CHECK_THROWS(Senha("Senha 1"));
+    CHECK_THROWS(Senha("Senha@"));
+    CHECK_THROWS(Senha("A1b23C")); // numeros seguidos
+    CHECK_THROWS(Senha("ab1C2d")); // letras seguidas
+    CHECK_THROWS(Senha("A1B2C3")); // sem minuscula
+    CHECK_THROWS(Senha("a1b2c3")); // sem maiuscula
+    CHECK_THROWS(Senha("AbCdEf")); // sem numero
+    CHECK_THROWS(Senha("A1b2C")); // < 6
+    CHECK_THROWS(Senha("A1b2C3d")); // > 6
   }
 }

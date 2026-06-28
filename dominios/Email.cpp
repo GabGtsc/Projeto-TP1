@@ -31,6 +31,9 @@ void Email::ValidarEmail(const std::string &email) {
 
   for (size_t i = 0; i < TamanhoParteLocal; i++) {
     if (ParteLocal[i] == '-' || ParteLocal[i] == '.') {
+      if (i + 1 < TamanhoParteLocal && !AlfabetoMinusculoOuDigito(ParteLocal[i + 1])) {
+        throw std::invalid_argument("Ponto ou Hifen deve ser seguido por letra ou digito!");
+      }
       continue;
     }
     if (!AlfabetoMinusculoOuDigito(ParteLocal[i])) {
@@ -59,12 +62,13 @@ void Email::ValidarEmail(const std::string &email) {
     throw std::invalid_argument("Dominio sem nenhum '.'");
   }
 
-  for (size_t i = 0; i < TamanhoDominio - 1; i++) {
+  for (size_t i = 0; i < TamanhoDominio; i++) {
     char c = ParteDominio[i];
-    if (c == '.' and ParteDominio[i + 1] == '.') {
-      throw std::invalid_argument("Parte em Dominio do email esta vazio!");
-    }
-    if (!AlfabetoMinusculoOuDigito(c) and c != '-' and c != '.') {
+    if (c == '.') {
+      if (i > 0 && ParteDominio[i - 1] == '-') throw std::invalid_argument("Dominio com hifen no final de parte!");
+      if (i + 1 < TamanhoDominio && ParteDominio[i + 1] == '-') throw std::invalid_argument("Dominio com hifen no inicio de parte!");
+      if (i + 1 < TamanhoDominio && ParteDominio[i + 1] == '.') throw std::invalid_argument("Parte em Dominio do email esta vazio!");
+    } else if (!AlfabetoMinusculoOuDigito(c) && c != '-') {
       throw std::invalid_argument("Em Dominio o seu email possui caracteres invalidos!");
     }
   }

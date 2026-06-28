@@ -20,11 +20,26 @@ bool CntrServicoGestao::excluirProjeto(const Codigo &codigo) {
 }
 
 // SPRINT
+bool ehBissexto(int ano) {
+    return (ano % 400 == 0) || ((ano % 4 == 0) && (ano % 100 != 0));
+}
+
+int diasNoMes(int mes, int ano) {
+    if (mes == 2) return ehBissexto(ano) ? 29 : 28;
+    if (mes == 4 || mes == 6 || mes == 9 || mes == 11) return 30;
+    return 31;
+}
+
+int contarDiasAte(int dia, int mes, int ano) {
+    int dias = ano * 365 + ano / 4 - ano / 100 + ano / 400;
+    for (int m = 1; m < mes; m++) {
+        dias += diasNoMes(m, ano);
+    }
+    dias += dia;
+    return dias;
+}
+
 int diasEntreDatas(const std::string& d1, const std::string& d2) {
-    // Calculo simples para a validação. Apenas exibe o uso de tempo no projeto.
-    // Em C++, o ideal seria usar <chrono>, mas dadas as simplificações de Data (1..31, 1..12), 
-    // um cálculo aproximado bastaria para a lógica, ou algo mais sofisticado se exigido.
-    // Como a data é DD/MM/AAAA.
     int dia1 = std::stoi(d1.substr(0, 2));
     int mes1 = std::stoi(d1.substr(3, 2));
     int ano1 = std::stoi(d1.substr(6, 4));
@@ -33,8 +48,8 @@ int diasEntreDatas(const std::string& d1, const std::string& d2) {
     int mes2 = std::stoi(d2.substr(3, 2));
     int ano2 = std::stoi(d2.substr(6, 4));
     
-    int t1 = ano1 * 365 + mes1 * 30 + dia1;
-    int t2 = ano2 * 365 + mes2 * 30 + dia2;
+    int t1 = contarDiasAte(dia1, mes1, ano1);
+    int t2 = contarDiasAte(dia2, mes2, ano2);
     return (t2 - t1);
 }
 
@@ -68,6 +83,40 @@ bool CntrServicoGestao::lerPlanoDeSprint(const Codigo &codigo, PlanoDeSprint &pl
     return armazenamento->lerPlanoDeSprint(codigo, plano);
 }
 bool CntrServicoGestao::atualizarPlanoDeSprint(const PlanoDeSprint &plano) {
+    std::vector<Codigo> projetos = armazenamento->listarTodosProjetos();
+    Codigo projCodigo;
+    bool found = false;
+    for (const auto& pc : projetos) {
+        std::vector<Codigo> sprints = armazenamento->listarSprintsDeProjeto(pc);
+        for (const auto& sc : sprints) {
+            if (sc.getCodigo() == plano.getCodigo().getCodigo()) {
+                projCodigo = pc;
+                found = true;
+                break;
+            }
+        }
+        if (found) break;
+    }
+
+    if (found) {
+        Projeto p;
+        if (armazenamento->lerProjeto(projCodigo, p)) {
+            int diasTotais = diasEntreDatas(p.getInicio().getData(), p.getTermino().getData());
+            std::vector<Codigo> sprints = armazenamento->listarSprintsDeProjeto(projCodigo);
+            int somaCapacidade = 0;
+            for (const auto &c : sprints) {
+                if (c.getCodigo() != plano.getCodigo().getCodigo()) {
+                    PlanoDeSprint s;
+                    if (armazenamento->lerPlanoDeSprint(c, s)) {
+                        somaCapacidade += s.getCapacidade().getTempo();
+                    }
+                }
+            }
+            if (somaCapacidade + plano.getCapacidade().getTempo() > diasTotais) {
+                return false;
+            }
+        }
+    }
     return armazenamento->atualizarPlanoDeSprint(plano);
 }
 bool CntrServicoGestao::excluirPlanoDeSprint(const Codigo &codigo) {
@@ -76,9 +125,11 @@ bool CntrServicoGestao::excluirPlanoDeSprint(const Codigo &codigo) {
 
 // HISTORIA
 bool CntrServicoGestao::criarHistoriaDeUsuario(const HistoriaDeUsuario &historia, const Codigo &codigoProjeto) {
-    // A historia deve ter o estado inicial "A FAZER" (ja vem setada ou o sistema pode forcar)
-    if (armazenamento->criarHistoriaDeUsuario(historia)) {
-        return armazenamento->associarHistoriaProjeto(historia.getCodigo(), codigoProjeto);
+    HistoriaDeUsuario h = historia;
+    Estado est; est.setEstado("A FAZER");
+    h.setEstado(est);
+    if (armazenamento->criarHistoriaDeUsuario(h)) {
+        return armazenamento->associarHistoriaProjeto(h.getCodigo(), codigoProjeto);
     }
     return false;
 }
@@ -86,6 +137,43 @@ bool CntrServicoGestao::lerHistoriaDeUsuario(const Codigo &codigo, HistoriaDeUsu
     return armazenamento->lerHistoriaDeUsuario(codigo, historia);
 }
 bool CntrServicoGestao::atualizarHistoriaDeUsuario(const HistoriaDeUsuario &historia) {
+    std::vector<Codigo> projetos = armazenamento->listarTodosProjetos();
+    Codigo sprintCodigo;
+    bool foundSprint = false;
+    for (const auto& pc : projetos) {
+        std::vector<Codigo> sprints = armazenamento->listarSprintsDeProjeto(pc);
+        for (const auto& sc : sprints) {
+            std::vector<Codigo> historias = armazenamento->listarHistoriasDeSprint(sc);
+            for (const auto& hc : historias) {
+                if (hc.getCodigo() == historia.getCodigo().getCodigo()) {
+                    sprintCodigo = sc;
+                    foundSprint = true;
+                    break;
+                }
+            }
+            if (foundSprint) break;
+        }
+        if (foundSprint) break;
+    }
+
+    if (foundSprint) {
+        PlanoDeSprint p;
+        if (armazenamento->lerPlanoDeSprint(sprintCodigo, p)) {
+            std::vector<Codigo> hists = armazenamento->listarHistoriasDeSprint(sprintCodigo);
+            int somaEstimativas = 0;
+            for (const auto& hc : hists) {
+                if (hc.getCodigo() != historia.getCodigo().getCodigo()) {
+                    HistoriaDeUsuario h;
+                    if (armazenamento->lerHistoriaDeUsuario(hc, h)) {
+                        somaEstimativas += h.getEstimativa().getTempo();
+                    }
+                }
+            }
+            if (somaEstimativas + historia.getEstimativa().getTempo() > p.getCapacidade().getTempo()) {
+                return false;
+            }
+        }
+    }
     return armazenamento->atualizarHistoriaDeUsuario(historia);
 }
 bool CntrServicoGestao::excluirHistoriaDeUsuario(const Codigo &codigo) {

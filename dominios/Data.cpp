@@ -19,8 +19,8 @@ void Data::setData(const std::string &data) {
   int mes = ((data[3] - '0') * 10) + (data[4] - '0');
   int ano = std::stoi(std::string{data[6], data[7], data[8], data[9]});
 
-  if (ano < 2000 || ano > 2099)
-    throw std::invalid_argument("Ano deve ser valor entre 2000 e 2099");
+  if (ano < 2000 || ano > 2999)
+    throw std::invalid_argument("Ano deve ser valor entre 2000 e 2999");
   if (mes < 1 || mes > 12)
     throw std::invalid_argument("Mês deve ser entre 1 e 12");
   if (dia < 1)
@@ -28,7 +28,7 @@ void Data::setData(const std::string &data) {
 
   const std::vector<int> dias_por_mes = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-  bool bissexto = (ano % 4 == 0);
+  bool bissexto = (ano % 400 == 0) || ((ano % 4 == 0) && (ano % 100 != 0));
 
   if (mes == 2) {
     if ((bissexto && dia > dias_por_mes[mes - 1] + 1) || (!bissexto && dia > dias_por_mes[mes - 1]))
