@@ -2,8 +2,8 @@
 #include <cctype>
 
 void Texto::validar(const std::string &texto) {
-  if (texto.length() < 10 || texto.length() > 40) {
-    throw std::invalid_argument("Formato invalido: O texto deve ter entre 10 e 40 caracteres.");
+  if (texto.length() == 0 || texto.length() > 40) {
+    throw std::invalid_argument("Formato invalido: O texto deve ter entre 1 e 40 caracteres.");
   }
 
   for (size_t i = 0; i < texto.length() - 1; i++) {

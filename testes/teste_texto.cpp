@@ -9,8 +9,8 @@ TEST_CASE("Testando o Dominio Texto") {
   }
 
   SUBCASE("Valores invalidos - Tamanho") {
-    // Menos de 10 caracteres
-    CHECK_THROWS(Texto("Curto"));
+    // Vazio (tamanho 0)
+    CHECK_THROWS(Texto(""));
     // Mais de 40 caracteres
     CHECK_THROWS(Texto("Este texto eh muito longo e vai ultrapassar o limite de 40 caracteres permitido."));
   }
