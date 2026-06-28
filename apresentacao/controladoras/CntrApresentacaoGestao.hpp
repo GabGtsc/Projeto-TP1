@@ -34,4 +34,35 @@ public:
      * @param sessao DTO de Sessão contendo Email, Nome e Papel do usuário logado.
      */
     void executar(const Sessao &sessao) override;
+
+private:
+    void gerenciarProjetos(const Sessao &sessao);
+    void gerenciarSprints(const Sessao &sessao);
+    void gerenciarHistorias(const Sessao &sessao);
+    
+    // Sub-rotinas auxiliares
+    void criarProjeto(const Sessao &sessao);
+    void criarSprint(const Sessao &sessao);
+    void criarHistoria(const Sessao &sessao);
+    
+    void listarEVisualizarProjetos(const Sessao &sessao);
+    void listarEVisualizarSprints(const Sessao &sessao);
+    void listarEVisualizarHistorias(const Sessao &sessao);
+    
+    void alterarEstadoHistoria(const Sessao &sessao);
+    void associarHistoriaPessoa(const Sessao &sessao);
+    void desassociarHistoriaPessoa(const Sessao &sessao);
+    void moverHistoriaParaSprint(const Sessao &sessao);
+
+    // Novos de Atualizar e Excluir
+    void atualizarProjeto(const Sessao &sessao);
+    void excluirProjeto(const Sessao &sessao);
+    void atualizarSprint(const Sessao &sessao);
+    void excluirSprint(const Sessao &sessao);
+    void atualizarHistoria(const Sessao &sessao);
+    void excluirHistoria(const Sessao &sessao);
+
+    // Novas Listagens
+    void listarHistoriasDeSprint(const Sessao &sessao);
+    void listarHistoriasDePessoa(const Sessao &sessao);
 };
