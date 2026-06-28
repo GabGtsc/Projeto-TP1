@@ -27,5 +27,5 @@ public:
    * @param senha Senha fornecida.
    * @return true se as credenciais forem válidas, false caso contrário.
    */
-  bool autenticar(const Email &email, const Senha &senha) override;
+  bool autenticar(const Email &email, const Senha &senha, Nome &nome) override;
 };

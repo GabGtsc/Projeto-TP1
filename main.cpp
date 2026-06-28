@@ -29,14 +29,20 @@ int main() {
 
   bool rodando = true;
   std::string escolha;
+  bool logado = false;
+  std::string nomeLogado = "";
 
   while (rodando) {
     limparTelaPrincipal();
     std::cout << "===============================\n";
     std::cout << "    SISTEMA DE GERENCIAMENTO   \n";
     std::cout << "===============================\n";
-    std::cout << "1 - Login\n";
-    std::cout << "2 - Cadastro\n";
+    if (logado) {
+        std::cout << "Ola, " << nomeLogado << "!\n\n";
+    }
+    
+    std::cout << (logado ? "1 - Logout\n" : "1 - Login\n");
+    std::cout << "2 - Cadastro / Gerenciar Pessoas\n";
     std::cout << "3 - Sair\n";
     std::cout << "Escolha uma opcao: ";
     
@@ -44,16 +50,26 @@ int main() {
     std::getline(std::cin, escolha);
 
     if (escolha == "1") {
-      ResultadoAutenticacao sessao = ctrlAuth.executar();
-      limparTelaPrincipal();
-      if (sessao.sucesso) {
-        std::cout << "\n[SISTEMA] Bem-vindo(a)! Usuario autenticado com sucesso: " << sessao.email.getEmail() << "\n";
-        std::cout << "Pressione ENTER para continuar...";
-        std::getline(std::cin, escolha);
+      if (logado) {
+          logado = false;
+          nomeLogado = "";
+          std::cout << "\n[SISTEMA] Logout realizado com sucesso.\n";
+          std::cout << "Pressione ENTER para continuar...";
+          std::getline(std::cin, escolha);
       } else {
-        std::cout << "\n[SISTEMA] Autenticacao cancelada ou falhou.\n";
-        std::cout << "Pressione ENTER para voltar ao menu...";
-        std::getline(std::cin, escolha);
+          ResultadoAutenticacao sessao = ctrlAuth.executar();
+          limparTelaPrincipal();
+          if (sessao.sucesso) {
+            logado = true;
+            nomeLogado = sessao.nome.getNome();
+            std::cout << "\n[SISTEMA] Bem-vindo(a)! Usuario autenticado com sucesso: " << sessao.email.getEmail() << "\n";
+            std::cout << "Pressione ENTER para continuar...";
+            std::getline(std::cin, escolha);
+          } else {
+            std::cout << "\n[SISTEMA] Autenticacao cancelada ou falhou.\n";
+            std::cout << "Pressione ENTER para voltar ao menu...";
+            std::getline(std::cin, escolha);
+          }
       }
     } else if (escolha == "2") {
       ctrlCad.executar();

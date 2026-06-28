@@ -43,10 +43,12 @@ ResultadoAutenticacao CntrApresentacaoAutenticacao::executar() {
             emailInstancia.setEmail(entradaEmail);
             senhaInstancia.setSenha(entradaSenha);
 
-            if (servico->autenticar(emailInstancia, senhaInstancia)) {
+            Nome nomeInstancia;
+            if (servico->autenticar(emailInstancia, senhaInstancia, nomeInstancia)) {
                 // Sucesso na autenticação
                 resultado.sucesso = true;
                 resultado.email = emailInstancia;
+                resultado.nome = nomeInstancia;
                 return resultado; // Sai da tela retornando sucesso (a main cuidará de avisar o login)
             } else {
                 mensagemErro = "Email ou senha incorretos.";
