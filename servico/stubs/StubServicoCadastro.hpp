@@ -10,7 +10,7 @@ private:
   bool resultado = true;
 
 public:
-  bool ler(const Email &email, const Pessoa &pessoa) override { return this->resultado; };
+  bool ler(const Email &email, Pessoa &pessoa) override { (void)email; (void)pessoa; return this->resultado; };
   bool criar(const Pessoa &pessoa) override { return this->resultado; }
   bool atualizar(const Pessoa &pessoa) override { return this->resultado; }
   bool excluir(const Email &email) override { return this->resultado; };

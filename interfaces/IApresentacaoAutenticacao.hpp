@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../dominios/Email.hpp"
+#include "../dominios/Nome.hpp"
 
 /**
  * @struct ResultadoAutenticacao
@@ -12,6 +13,7 @@
 struct ResultadoAutenticacao {
     bool sucesso; ///< Indica se a autenticação foi realizada com sucesso (true) ou não (false).
     Email email;  ///< Instância do domínio Email contendo o e-mail validado do usuário (se sucesso == true).
+    Nome nome;    ///< Instância do domínio Nome contendo o nome do usuário autenticado.
 };
 
 /**
