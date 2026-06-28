@@ -1,46 +1,59 @@
 #include "CntrApresentacaoAutenticacao.hpp"
+#include <cstdlib>
 
-void CntrApresentacaoAutenticacao::setServico(IServicoAutenticacao* servico) {
-    this->servico = servico;
+namespace {
+    void limparTela() {
+#if defined _WIN32
+        std::system("cls");
+#else
+        std::system("clear");
+#endif
+    }
 }
 
-void CntrApresentacaoAutenticacao::executar() {
+ResultadoAutenticacao CntrApresentacaoAutenticacao::executar() {
     std::string entradaEmail, entradaSenha;
     Email emailInstancia;
     Senha senhaInstancia;
+    ResultadoAutenticacao resultado = {false, Email()};
+    std::string mensagemErro = "";
 
     while (true) {
+        limparTela();
         std::cout << "\n===============================\n";
         std::cout << "        TELA DE LOGIN          \n";
         std::cout << "===============================\n";
+        
+        if (!mensagemErro.empty()) {
+            std::cout << "[ERRO] " << mensagemErro << "\n\n";
+            mensagemErro = ""; // Limpa a mensagem após exibir
+        }
         
         std::cout << "Digite seu Email (ou 'sair' para voltar): ";
         std::cin >> entradaEmail;
         
         if (entradaEmail == "sair") {
-            return;
+            return resultado;
         }
 
         std::cout << "Digite sua Senha: ";
         std::cin >> entradaSenha;
 
         try {
-            // Usando os setters exatos dos seus domínios
             emailInstancia.setEmail(entradaEmail);
             senhaInstancia.setSenha(entradaSenha);
 
-            // Chama o serviço (Stub)
             if (servico->autenticar(emailInstancia, senhaInstancia)) {
-                std::cout << "\n[SUCESSO] Autenticacao realizada com sucesso!\n";
-                this->emailLogado = emailInstancia;
-                this->autenticado = true;
-                return; // Sai da tela de login
+                // Sucesso na autenticação
+                resultado.sucesso = true;
+                resultado.email = emailInstancia;
+                return resultado; // Sai da tela retornando sucesso (a main cuidará de avisar o login)
             } else {
-                std::cout << "\n[FALHA] Email ou senha incorretos.\n";
+                mensagemErro = "Email ou senha incorretos.";
             }
         } 
         catch (const std::invalid_argument &exp) {
-            std::cout << "\n[ERRO] Formato invalido. Verifique os dados digitados e tente novamente.\n";
+            mensagemErro = exp.what();
         }
     }
 }
