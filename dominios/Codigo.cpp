@@ -18,4 +18,4 @@ void Codigo::setCodigo(const string &texto) {
 
 string Codigo::getCodigo() const { return valor; }
 
-Codigo::Codigo(const string &texto) { setCodigo(texto); }
+Codigo::Codigo(const std::string &texto) { setCodigo(texto); }

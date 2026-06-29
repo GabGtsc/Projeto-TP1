@@ -33,14 +33,18 @@ public:
   void setTexto(const std::string &texto);
 
   /**
-   * @brief Construtor da classe Texto
+   * @brief Construtor padrão da classe Texto.
+   */
+  Texto() = default;
+
+  /**
+   * @brief Construtor que inicializa o texto.
    *
    * Inicializa o objeto com um texto valido, internamente chama
    * setTexto() para definir o valor inicial.
    *
    * @param texto String com valor inicial
    */
-  Texto() = default;
   Texto(const std::string &texto) { setTexto(texto); };
 
   /**

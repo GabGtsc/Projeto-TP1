@@ -31,14 +31,18 @@ public:
   void setPrioridade(const std::string &prioridade);
 
   /**
-   * @brief Construtor da classe Prioridade
+   * @brief Construtor padrão da classe Prioridade.
+   */
+  Prioridade() = default;
+
+  /**
+   * @brief Construtor que inicializa a prioridade.
    *
    * Inicializa o objeto com um valor valido, internamente chama
    * setPrioridade() para definir o valor inicial.
    *
    * @param prioridade String com valor inicial para prioridade
    */
-  Prioridade() = default;
   Prioridade(const std::string &prioridade) { setPrioridade(prioridade); };
 
   /**

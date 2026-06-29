@@ -31,14 +31,18 @@ public:
   void setPapel(const std::string &papel);
 
   /**
-   * @brief Construtor da classe Papel
+   * @brief Construtor padrão da classe Papel.
+   */
+  Papel() = default;
+
+  /**
+   * @brief Construtor que inicializa o papel.
    *
    * Inicializa o objeto com um valor valido, internamente chama
    * setPapel() para definir o valor inicial.
    *
    * @param papel String com valor inicial para o papel
    */
-  Papel() = default;
   Papel(const std::string &papel) { setPapel(papel); };
 
   /**

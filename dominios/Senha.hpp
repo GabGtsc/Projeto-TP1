@@ -31,14 +31,18 @@ public:
   void setSenha(const std::string &senha);
 
   /**
-   * @brief Construtor da classe Senha
+   * @brief Construtor padrão da classe Senha.
+   */
+  Senha() = default;
+
+  /**
+   * @brief Construtor que inicializa a senha.
    *
    * Inicializa o objeto com uma senha valida, internamente chama
    * setSenha() para definir o valor inicial.
    *
    * @param senha String com valor inicial da senha
    */
-  Senha() = default;
   Senha(const std::string &senha) { setSenha(senha); };
 
   /**

@@ -22,8 +22,15 @@ public:
    */
   CntrServicoCadastro(IArmazenamentoCadastro *armazenamento) : armazenamento(armazenamento) {}
 
+  /// @copydoc IServicoCadastro::ler
   bool ler(const Email &email, Pessoa &pessoa) override;
+  
+  /// @copydoc IServicoCadastro::criar
   bool criar(const Pessoa &pessoa) override;
+  
+  /// @copydoc IServicoCadastro::atualizar
   bool atualizar(const Pessoa &pessoa) override;
+  
+  /// @copydoc IServicoCadastro::excluir
   bool excluir(const Email &email) override;
 };

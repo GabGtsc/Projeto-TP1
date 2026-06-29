@@ -24,14 +24,18 @@ public:
   void setEstado(const std::string &estado);
 
   /**
-   * @brief Constructor da classe estado
+   * @brief Construtor padrão da classe Estado.
+   */
+  Estado() = default;
+
+  /**
+   * @brief Construtor que inicializa o estado.
    *
    * Inicializa o objeto com um valor de estado valido, internamente chama
    * setEstado() para definir valor inicial.
    *
    * @param estado String com valor inicial para estado
    */
-  Estado() = default;
   Estado(const std::string estado) { setEstado(estado); };
 
   /**

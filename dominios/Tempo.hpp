@@ -28,14 +28,18 @@ public:
   void setTempo(int tempo);
 
   /**
-   * @brief Construtor da classe Tempo
+   * @brief Construtor padrão da classe Tempo.
+   */
+  Tempo() = default;
+
+  /**
+   * @brief Construtor que inicializa o tempo.
    *
    * Inicializa o objeto com um valor valido, internamente chama
    * setTempo() para definir o valor inicial.
    *
    * @param tempo Inteiro com valor inicial
    */
-  Tempo() = default;
   Tempo(int tempo) { setTempo(tempo); };
 
   /**

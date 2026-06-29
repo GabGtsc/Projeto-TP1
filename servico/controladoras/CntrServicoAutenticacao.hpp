@@ -21,11 +21,6 @@ public:
    */
   CntrServicoAutenticacao(IArmazenamentoAutenticacao *armazenamento) : armazenamento(armazenamento) {}
 
-  /**
-   * @brief Autentica um usuário no sistema.
-   * @param email E-mail fornecido.
-   * @param senha Senha fornecida.
-   * @return true se as credenciais forem válidas, false caso contrário.
-   */
+  /// @copydoc IServicoAutenticacao::autenticar
   bool autenticar(const Email &email, const Senha &senha, Nome &nome, Papel &papel) override;
 };

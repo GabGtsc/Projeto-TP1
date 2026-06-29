@@ -15,7 +15,7 @@
  *
  * Responsável por gerenciar os contêineres de dados (como ContPessoas) e
  * fornecer a implementação real para as interfaces de acesso a dados usadas
- * pelos serviços (IArmazenamentoAutenticacao, IArmazenamentoCadastro).
+ * pelos serviços (IArmazenamentoAutenticacao, IArmazenamentoCadastro e IArmazenamentoGestao).
  */
 class CntrDados : public IArmazenamentoAutenticacao, public IArmazenamentoCadastro, public IArmazenamentoGestao {
 private:
@@ -25,84 +25,81 @@ private:
   ContHistorias contHistorias;
 
 public:
+  /**
+   * @brief Construtor padrão de CntrDados.
+   */
   CntrDados();
 
   // Implementação de IArmazenamentoAutenticacao
-  /**
-   * @brief Obtém os dados de uma pessoa para autenticação.
-   * @param email E-mail da pessoa a buscar.
-   * @param pessoa Referência para preencher os dados.
-   * @return true se encontrada com sucesso.
-   * @throw std::invalid_argument se a pessoa não for encontrada.
-   */
+  /// @copydoc IArmazenamentoAutenticacao::obterPessoa
   bool obterPessoa(const Email &email, Pessoa &pessoa) override;
 
   // Implementação de IArmazenamentoCadastro
-  /**
-   * @brief Cria um novo registro de Pessoa.
-   * @param pessoa Objeto a ser inserido.
-   * @return true em caso de sucesso.
-   * @throw std::invalid_argument se o e-mail já existir.
-   */
+  /// @copydoc IArmazenamentoCadastro::criar
   bool criar(const Pessoa &pessoa) override;
-
-  /**
-   * @brief Lê os dados de uma Pessoa pelo e-mail.
-   * @param email Chave primária.
-   * @param pessoa Objeto para preencher os dados.
-   * @return true em caso de sucesso.
-   * @throw std::invalid_argument se a pessoa não for encontrada.
-   */
+  /// @copydoc IArmazenamentoCadastro::ler
   bool ler(const Email &email, Pessoa &pessoa) override;
-
-  /**
-   * @brief Atualiza um registro existente de Pessoa.
-   * @param pessoa Objeto com os novos dados.
-   * @return true em caso de sucesso.
-   * @throw std::invalid_argument se a pessoa não existir para atualizar.
-   */
+  /// @copydoc IArmazenamentoCadastro::atualizar
   bool atualizar(const Pessoa &pessoa) override;
-
-  /**
-   * @brief Exclui um registro de Pessoa pelo e-mail.
-   * @param email Chave primária.
-   * @return true em caso de sucesso.
-   * @throw std::invalid_argument se a pessoa não for encontrada para exclusão.
-   */
+  /// @copydoc IArmazenamentoCadastro::excluir
   bool excluir(const Email &email) override;
 
   // ================= GESTAO =================
 
   // PROJETO
+  /// @copydoc IArmazenamentoGestao::criarProjeto
   bool criarProjeto(const Projeto &projeto) override;
+  /// @copydoc IArmazenamentoGestao::lerProjeto
   bool lerProjeto(const Codigo &codigo, Projeto &projeto) override;
+  /// @copydoc IArmazenamentoGestao::atualizarProjeto
   bool atualizarProjeto(const Projeto &projeto) override;
+  /// @copydoc IArmazenamentoGestao::excluirProjeto
   bool excluirProjeto(const Codigo &codigo) override;
+  /// @copydoc IArmazenamentoGestao::associarProjetoPessoa
   bool associarProjetoPessoa(const Codigo &codigoProjeto, const Email &emailPessoa) override;
+  /// @copydoc IArmazenamentoGestao::listarProjetosDePessoa
   std::vector<Codigo> listarProjetosDePessoa(const Email &emailPessoa) override;
+  /// @copydoc IArmazenamentoGestao::listarTodosProjetos
   std::vector<Codigo> listarTodosProjetos() override;
 
   // PLANO DE SPRINT
+  /// @copydoc IArmazenamentoGestao::criarPlanoDeSprint
   bool criarPlanoDeSprint(const PlanoDeSprint &plano) override;
+  /// @copydoc IArmazenamentoGestao::lerPlanoDeSprint
   bool lerPlanoDeSprint(const Codigo &codigo, PlanoDeSprint &plano) override;
+  /// @copydoc IArmazenamentoGestao::atualizarPlanoDeSprint
   bool atualizarPlanoDeSprint(const PlanoDeSprint &plano) override;
+  /// @copydoc IArmazenamentoGestao::excluirPlanoDeSprint
   bool excluirPlanoDeSprint(const Codigo &codigo) override;
+  /// @copydoc IArmazenamentoGestao::associarSprintProjeto
   bool associarSprintProjeto(const Codigo &codigoSprint, const Codigo &codigoProjeto) override;
+  /// @copydoc IArmazenamentoGestao::listarSprintsDeProjeto
   std::vector<Codigo> listarSprintsDeProjeto(const Codigo &codigoProjeto) override;
 
   // HISTORIA DE USUARIO
+  /// @copydoc IArmazenamentoGestao::criarHistoriaDeUsuario
   bool criarHistoriaDeUsuario(const HistoriaDeUsuario &historia) override;
+  /// @copydoc IArmazenamentoGestao::lerHistoriaDeUsuario
   bool lerHistoriaDeUsuario(const Codigo &codigo, HistoriaDeUsuario &historia) override;
+  /// @copydoc IArmazenamentoGestao::atualizarHistoriaDeUsuario
   bool atualizarHistoriaDeUsuario(const HistoriaDeUsuario &historia) override;
+  /// @copydoc IArmazenamentoGestao::excluirHistoriaDeUsuario
   bool excluirHistoriaDeUsuario(const Codigo &codigo) override;
   
+  /// @copydoc IArmazenamentoGestao::associarHistoriaProjeto
   bool associarHistoriaProjeto(const Codigo &codigoHistoria, const Codigo &codigoProjeto) override;
+  /// @copydoc IArmazenamentoGestao::listarHistoriasDeProjeto
   std::vector<Codigo> listarHistoriasDeProjeto(const Codigo &codigoProjeto) override;
   
+  /// @copydoc IArmazenamentoGestao::associarHistoriaSprint
   bool associarHistoriaSprint(const Codigo &codigoHistoria, const Codigo &codigoSprint) override;
+  /// @copydoc IArmazenamentoGestao::listarHistoriasDeSprint
   std::vector<Codigo> listarHistoriasDeSprint(const Codigo &codigoSprint) override;
   
+  /// @copydoc IArmazenamentoGestao::associarHistoriaPessoa
   bool associarHistoriaPessoa(const Codigo &codigoHistoria, const Email &emailPessoa) override;
+  /// @copydoc IArmazenamentoGestao::desassociarHistoriaPessoa
   bool desassociarHistoriaPessoa(const Codigo &codigoHistoria, const Email &emailPessoa) override;
+  /// @copydoc IArmazenamentoGestao::listarHistoriasDePessoa
   std::vector<Codigo> listarHistoriasDePessoa(const Email &emailPessoa) override;
 };
